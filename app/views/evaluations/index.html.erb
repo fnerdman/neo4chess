@@ -1,0 +1,31 @@
+<h1>Listing evaluations</h1>
+
+<table>
+  <tr>
+    <th>Engine</th>
+    <th>Centipawns</th>
+    <th>Ply</th>
+    <th>Nnodes</th>
+    <th>Bestpath</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @evaluations.each do |evaluation| %>
+  <tr>
+    <td><%= evaluation.engine %></td>
+    <td><%= evaluation.centipawns %></td>
+    <td><%= evaluation.ply %></td>
+    <td><%= evaluation.nNodes %></td>
+    <td><%= evaluation.bestPath %></td>
+    <td><%= link_to 'Show', evaluation %></td>
+    <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
+    <td><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Evaluation', new_evaluation_path %>

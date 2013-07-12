@@ -1,4 +1,22 @@
 Neo4chess::Application.routes.draw do
+  resources :evaluations
+
+
+  resources :commentaries
+
+
+  resources :players
+
+
+  resources :events
+
+
+  resources :games
+
+
+  resources :positions
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
