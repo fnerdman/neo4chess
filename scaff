@@ -1,0 +1,6 @@
+rails generate scaffold Position fen:string --indices fen --has_n moveTo
+rails generate scaffold Game id:string name:string halfturns:integer result:string date:datetime mode:string site:string --indices id name --has_one startsAt
+rails generate scaffold Event name:string site:string date:datetime --indices name --has_n playedGames
+rails generate scaffold Player name:string --indices name --has_n playedWhite playedBlack
+rails generate scaffold Commentary title:string body:string --has_one commentsOn
+rails generate scaffold Evaluation engine:string centipawns:integer ply:integer nNodes:integer bestPath:string --has_one evaluates
