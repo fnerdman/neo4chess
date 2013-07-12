@@ -4,6 +4,9 @@
   <b>Name:</b>
   <%= @player.name %>
 </p>
+<% render 'test' %>
+<% @games = QueryController.getPlayerGames(@player)%>
+<%= render 'games/game', :object => @games %>
 
 
 <%= link_to 'Edit', edit_player_path(@player) %> |

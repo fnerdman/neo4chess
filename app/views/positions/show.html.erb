@@ -5,6 +5,11 @@
   <%= @position.fen %>
 </p>
 
+<% @positions = QueryController.getOutgoingPositions(@position) %>
+<%= render 'following', :object => @positions %>
+
+<% @games = QueryController.getGames(@position)%>
+<%= render 'games/game', :object => @games %>
 
 <%= link_to 'Edit', edit_position_path(@position) %> |
 <%= link_to 'Back', positions_path %>

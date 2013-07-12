@@ -1,4 +1,7 @@
 Neo4chess::Application.routes.draw do
+  get "pgn/upload"
+  post "pgn/upload", to: 'pgn#uploadpost'
+
   resources :evaluations
 
 
