@@ -1,71 +1,20 @@
 class EvaluationsController < ApplicationController
-  # GET /evaluations
-  # GET /evaluations.json
-  def index
-    @evaluations = Evaluation.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @evaluations }
-    end
-  end
-
-  # GET /evaluations/1
-  # GET /evaluations/1.json
-  def show
-    @evaluation = Evaluation.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @evaluation }
-    end
-  end
-
-  # GET /evaluations/new
-  # GET /evaluations/new.json
-  def new
-    @evaluation = Evaluation.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @evaluation }
-    end
-  end
-
-  # GET /evaluations/1/edit
-  def edit
-    @evaluation = Evaluation.find(params[:id])
-  end
+  before_filter :load_position
 
   # POST /evaluations
   # POST /evaluations.json
   def create
     @evaluation = Evaluation.new(params[:evaluation])
-    position = Position.find(:id => params[:evaluation][:position_id])
-    rel = Neo4j::Rails::Relationship.new(:evaluates, @evaluation, position)
+    rel = Neo4j::Rails::Relationship.new(:evaluates, @evaluation, @position)
 
     respond_to do |format|
       if @evaluation.save and rel.save
-        format.html { redirect_to position, notice: 'Evaluation was successfully created.' }
+        format.html { redirect_to @position, notice: 'Evaluation was successfully created.' }
         format.json { render json: @evaluation, status: :created, location: @evaluation }
       else
-        format.html { render action: "new" }
-        format.json { render json: @evaluation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
-  # PUT /evaluations/1
-  # PUT /evaluations/1.json
-  def update
-    @evaluation = Evaluation.find(params[:id])
-
-    respond_to do |format|
-      if @evaluation.update_attributes(params[:evaluation])
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
+        format.html { redirect_to @position, error: 'Failed to create comment.' }
         format.json { render json: @evaluation.errors, status: :unprocessable_entity }
       end
     end
@@ -78,8 +27,14 @@ class EvaluationsController < ApplicationController
     @evaluation.destroy
 
     respond_to do |format|
-      format.html { redirect_to evaluations_url }
+      format.html { redirect_to @position, notice: 'Evaluation was successfully destroyed.'  }
       format.json { head :no_content }
     end
   end
+
+  private
+
+    def load_position
+      @position = Position.find(params[:position_id])
+    end
 end

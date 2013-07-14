@@ -1,9 +1,8 @@
 Neo4chess::Application.routes.draw do
+
   get "home/index"
 
   get "search/index"
-
-  resources :comments
 
 
   get "pgn/upload"
@@ -11,19 +10,15 @@ Neo4chess::Application.routes.draw do
 
   get 'search', to: 'search#index'
 
-  resources :evaluations
+  resources :players, :only => [:index, :show]
+  resources :events, :only => [:index, :show]
+  resources :games, :only => [:index]
 
-
-  resources :players
-
-
-  resources :events
-
-
-  resources :games
-
-
-  resources :positions
+  resources :positions,  :only => [:index, :show] do #, :shallow => true
+    resources :comments, :only => [:create, :destroy]
+    resources :evaluations, :only => [:create, :destroy]
+    resources :games, :only => [:show]
+  end
 
   root :controller => :home, :action => :index
 

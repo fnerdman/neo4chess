@@ -39,19 +39,13 @@
     <% if k%2 ==0 %>
      <tr>
       <td><%=1+(k/2)%></td>
-      <td><%= link_to move.move, :position_id => move.end_node.id %>
+      <td><%= link_to move.move, position_game_path(move.start_node,@game) %>
     <% else %>
-      <td><%= link_to move.move, :position_id => move.end_node.id %></td>
+      <td><%= link_to move.move, position_game_path(move.start_node,@game) %></td>
      </tr>
     <% end %>
     <% k+=1 %>
   <% end %>
 </table>
-
-<% begin %>
-<%   @position = Position.find(:id => position_id) %>
-<% rescue NameError%>
-<%   @position = QueryController.getStartingPosition @game %>
-<% end %>
 
 <%= render "positions/show", :object => @position %>

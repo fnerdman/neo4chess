@@ -1,3 +1,5 @@
+<% individual = @position ? false : true %>
+
 <h1>Listing games</h1>
 
 <table>
@@ -31,11 +33,10 @@
     <td><%= game.result %></td>
     <td><%= game.mode %></td>
     <td>
-      <% begin %>
-      <%= link_to 'Show', game_path(game, :position_id => position_id) %>
-      <% rescue NameError%>
-      <%= link_to 'Show', game %>
+      <% if individual %>
+        <% @position = game.outgoing(:startsAt) %>
       <% end %>
+      <%= link_to 'Show', position_game_path(@position, game) %>
     </td>
   </tr>
 <% end %>

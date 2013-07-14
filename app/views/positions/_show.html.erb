@@ -13,17 +13,14 @@
 <p>
   <b>There are <%= @games.count %> games containing this position.</b>
 </p>
-<%= render 'games/list', :object => @games, :position_id => @position.id %>
+<%= render 'games/list', :object => @games %>
 
 <% @evaluations = QueryController.getEvaluations(@position)%>
 <%= render 'evaluations/list', :object => @evaluations %>
 <% @evaluation = Evaluation.new %>
-<%= render 'evaluations/form', :object => @evaluation, :position_id => @position.id %>
+<%= render 'evaluations/form', :object => @evaluation %>
 
 <% @comments = QueryController.getComments(@position)%>
 <%= render 'comments/list', :object => @comments %>
 <% @comment = Comment.new %>
-<%= render 'comments/form', :object => @comment, :position_id => @position.id %>
-
-<%= link_to 'Edit', edit_position_path(@position) %> |
-<%= link_to 'Back', positions_path %>
+<%= render 'comments/form', :object => @comment %>

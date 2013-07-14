@@ -8,8 +8,6 @@
     <th>Nnodes</th>
     <th>Bestpath</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @evaluations.each do |evaluation| %>
@@ -19,9 +17,7 @@
     <td><%= evaluation.ply %></td>
     <td><%= evaluation.nNodes %></td>
     <td><%= evaluation.bestPath %></td>
-    <td><%= link_to 'Show', evaluation %></td>
-    <td><%= link_to 'Edit', edit_evaluation_path(evaluation) %></td>
-    <td><%= link_to 'Destroy', evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', position_evaluation_path(@position,evaluation) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

@@ -1,4 +1,5 @@
-<%= form_for(@comment) do |f| %>
+
+<%= form_for @comment, as: :comment, url: position_comments_path(@position,@comment)  do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -19,7 +20,6 @@
     <%= f.label :body %><br />
     <%= f.text_area :body %>
   </div>
-  <%= f.hidden_field :position_id, :value => position_id %>
   <div class="actions">
     <%= f.submit %>
   </div>
