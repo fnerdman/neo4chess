@@ -41,10 +41,12 @@ class EvaluationsController < ApplicationController
   # POST /evaluations.json
   def create
     @evaluation = Evaluation.new(params[:evaluation])
+    position = Position.find(:id => params[:evaluation][:position_id])
+    rel = Neo4j::Rails::Relationship.new(:evaluates, @evaluation, position)
 
     respond_to do |format|
-      if @evaluation.save
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully created.' }
+      if @evaluation.save and rel.save
+        format.html { redirect_to position, notice: 'Evaluation was successfully created.' }
         format.json { render json: @evaluation, status: :created, location: @evaluation }
       else
         format.html { render action: "new" }

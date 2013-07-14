@@ -4,9 +4,23 @@
   <b>Name:</b>
   <%= @player.name %>
 </p>
-<% render 'test' %>
-<% @games = QueryController.getPlayerGames(@player)%>
-<%= render 'games/game', :object => @games %>
+<% @games = QueryController.getPlayerGames(@player) %>
+<% stats = QueryController.getPlayerStats(@player) %>
+<p>
+  <b>Total:</b>
+  <%= stats[:all] %>
+  </br>
+  <b>Won:</b>
+  <%= stats[:won] %>
+  </br>
+  <b>Drawn:</b>
+  <%= stats[:drawn] %>
+  </br>
+  <b>Lost:</b>
+  <%= stats[:lost] %>
+  </br>
+</p>
+<%= render 'games/list', :object => @games %>
 
 
 <%= link_to 'Edit', edit_player_path(@player) %> |

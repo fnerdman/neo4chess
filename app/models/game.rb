@@ -38,7 +38,7 @@ class Game < Neo4j::Rails::Model
 				pos = Position.find_or_create_by(:fen => fen)
 				
 				if lastPos
-					Move.create(:moveTo, pos, lastPos, :gameId => gameId, :nHalfturns => x)
+					Move.create(:moveTo, pos, lastPos, :gameId => gameId, :nHalfturns => x, :move => gameInfo.moves[x])
 				end
 				
 				x-=1

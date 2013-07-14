@@ -16,7 +16,7 @@
 </p>
 
 <% @games = QueryController.getEventGames(@event)%>
-<%= render 'games/game', :object => @games %>
+<%= render 'games/list', :object => @games %>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |

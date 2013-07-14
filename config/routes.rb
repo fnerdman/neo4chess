@@ -1,11 +1,17 @@
 Neo4chess::Application.routes.draw do
+  get "home/index"
+
+  get "search/index"
+
+  resources :comments
+
+
   get "pgn/upload"
   post "pgn/upload", to: 'pgn#uploadpost'
 
+  get 'search', to: 'search#index'
+
   resources :evaluations
-
-
-  resources :commentaries
 
 
   resources :players
@@ -19,6 +25,7 @@ Neo4chess::Application.routes.draw do
 
   resources :positions
 
+  root :controller => :home, :action => :index
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

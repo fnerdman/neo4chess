@@ -3,8 +3,9 @@
 
 class GameInfo
 
-	def initialize(positions, result, white=nil, black=nil, date=nil, event=nil, site=nil, round=nil)
+	def initialize(positions, moves, result, white=nil, black=nil, date=nil, event=nil, site=nil, round=nil)
 		@positions = positions
+		@moves = moves
 		@white = white
 		@black = black
 		@event = event
@@ -21,7 +22,7 @@ class GameInfo
 		@round = round
 		@result = result
 	end
-	attr_reader :positions, :result, :white, :black, :date, :event, :site, :round
+	attr_reader :positions, :moves, :result, :white, :black, :date, :event, :site, :round
 end
 
 class GameInfoFactory
@@ -47,7 +48,8 @@ class GameInfoFactory
 		@tags = Hash.new
 		@black = false
 		@enPass = nil
-		@positions = Array.new
+		@positions = []
+		@moves = []
 		resetBoard!
 		@positions << toFEN
 	end
@@ -104,7 +106,8 @@ class GameInfoFactory
 	end
 	
 	def addRawMoves moves
-		moves.each do |move|
+		@moves = moves
+		@moves.each do |move|
 			movePiece move
 		end
 	end
@@ -118,7 +121,7 @@ class GameInfoFactory
 		round = @tags["Round"].to_i
 		result = @tags["Result"]
 		
-		GameInfo.new(@positions, result, white, black, date, event, site, round)
+		GameInfo.new(@positions, @moves, result, white, black, date, event, site, round)
 	end
 	
 	def movePiece moveString

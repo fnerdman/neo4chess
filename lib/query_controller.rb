@@ -1,23 +1,23 @@
 class QueryController
 
 	def self.searchPosition fen
-		Position.find(:fen => fen)
+		Position.all(:fen => fen)
 	end
 	
 	def self.searchPlayer name
-		Player.find(:name => name)
+		Player.all(:name => name)
 	end
 	
 	def self.searchEvent name
-		Event.find(:name => name)
+		Event.all(:name => name)
 	end
 	
 	def self.searchGameByName name
-		Game.find(:name => name)
+		Game.all(:name => name)
 	end
 	
 	def self.searchGameById id
-		Game.find(:id => id)
+		Game.all(:id => id)
 	end
 	
 	def self.getWhitePlayer(game)
@@ -31,8 +31,12 @@ class QueryController
 	def self.getEvent game
 		game.incoming(:playedGames).first
 	end
+
+	def self.getStartingPosition game
+		game.outgoing(:startsAt).first
+	end
 	
-	def self.getCommentaries position
+	def self.getComments position
 		if position 
 			return position.incoming(:commentsOn).to_a
 		end
@@ -44,16 +48,50 @@ class QueryController
 		end
 	end
 	
+	def self.getEventGames event
+		if event
+			return event.outgoing(:playedGames).to_a
+		end
+	end
+
 	def self.getPlayerGames player
 		if player
 			return player.outgoing(:playedWhite).to_a + player.outgoing(:playedBlack).to_a
 		end
 	end
-	
-	def self.getEventGames event
-		if event
-			return event.outgoing(:playedGames).to_a
+
+	def self.getPlayerStats player
+		all = 0
+		won = 0
+		drawn = 0
+		lost = 0
+		if player
+			player.outgoing(:playedWhite).to_a.each do |game|
+				case game.result
+				when /1\-0/
+					won+=1
+				when /0\-1/
+					lost+=1
+				when /1\/2\-1\/2/
+					drawn+=1
+				end
+				all+=1
+			end
+
+			player.outgoing(:playedBlack).to_a.each do |game|
+				case game.result
+				when /1\-0/
+					lost+=1
+				when /0\-1/
+					won+=1
+				when /1\/2\-1\/2/
+					drawn+=1
+				end
+				all+=1
+			end
 		end
+
+		{:all => all,:won => won,:drawn => drawn,:lost => lost}
 	end
 
 	def self.getGames position
@@ -76,12 +114,32 @@ class QueryController
 		end
 		positions.values
 	end
+
+	def self.getOutgoingMoves position
+		positions = Hash.new
+		if position and rels = position.rels(:outgoing, :moveTo)
+			rels.each do |rel|
+				positions[rel.end_node.fen] = rel
+			end
+		end
+		positions.values
+	end
 	
 	def self.getIncomingPositions position
 		positions = Hash.new
 		if position and rels = position.rels(:incoming, :moveTo)
 			rels.each do |rel|
 				positions[rel.start_node.fen] = rel.start_node
+			end
+		end
+		positions.values
+	end
+
+	def self.getIncomingMoves position
+		positions = Hash.new
+		if position and rels = position.rels(:incoming, :moveTo)
+			rels.each do |rel|
+				positions[rel.start_node.fen] = rel
 			end
 		end
 		positions.values
@@ -93,6 +151,17 @@ class QueryController
 		moves.each do |move|
 			if move.rel_type == :moveTo
 				sequ[move.nHalfturns] = move.start_node
+			end
+		end
+		sequ
+	end
+
+	def self.getGameMoves gameId
+		moves = Move.find(:all, :gameId => gameId)
+		sequ = Array.new(moves.count-1)
+		moves.each do |move|
+			if move.rel_type == :moveTo
+				sequ[move.nHalfturns] = move
 			end
 		end
 		sequ

@@ -1,40 +1,57 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Id:</b>
-  <%= @game.id %>
-</p>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>White</th>
+    <th>Black</th>
+    <th>Event</th>
+    <th>Date</th>
+    <th>Site</th>
+    <th>Halfturns</th>
+    <th>Result</th>
+    <th>Mode</th>
+  </tr>
+  <% white = QueryController.getWhitePlayer @game %>
+  <% black = QueryController.getBlackPlayer @game %>
+  <% event = QueryController.getEvent @game %>
+  <tr>
+    <td><%= @game.id %></td>
+    <td><%= @game.name %></td>
+    <td><%= link_to white.name, white %></td>
+    <td><%= link_to black.name, black %></td>
+    <td><%= link_to event.name, event %></td>
+    <td><%= @game.date %></td>
+    <td><%= @game.site %></td>
+    <td><%= @game.halfturns %></td>
+    <td><%= @game.result %></1+(td>)
+    <td><%= @game.mode %></td>
+  </tr>
+</table>
 
-<p>
-  <b>Name:</b>
-  <%= @game.name %>
-</p>
+<p>Game Moves</p>
+<% moves = QueryController.getGameMoves @game.id %>
+<table>
+  <% k=0 %>
+  <% moves.each do |move| %>
+ 
+    <% if k%2 ==0 %>
+     <tr>
+      <td><%=1+(k/2)%></td>
+      <td><%= link_to move.move, :position_id => move.end_node.id %>
+    <% else %>
+      <td><%= link_to move.move, :position_id => move.end_node.id %></td>
+     </tr>
+    <% end %>
+    <% k+=1 %>
+  <% end %>
+</table>
 
-<p>
-  <b>Halfturns:</b>
-  <%= @game.halfturns %>
-</p>
+<% begin %>
+<%   @position = Position.find(:id => position_id) %>
+<% rescue NameError%>
+<%   @position = QueryController.getStartingPosition @game %>
+<% end %>
 
-<p>
-  <b>Result:</b>
-  <%= @game.result %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @game.date %>
-</p>
-
-<p>
-  <b>Mode:</b>
-  <%= @game.mode %>
-</p>
-
-<p>
-  <b>Site:</b>
-  <%= @game.site %>
-</p>
-
-
-<%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%= render "positions/show", :object => @position %>
