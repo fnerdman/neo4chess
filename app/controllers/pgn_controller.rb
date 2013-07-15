@@ -1,16 +1,13 @@
 class PgnController < ApplicationController
-  def uploadpost
- 	GameInfoFactory.createGamesFromPgn(params[:pgn].read.split(/\n/)).each do |gameInfo|
-  		Game.addGame gameInfo
-  	end
-  
-  	if true
-      render action: "upload", notice: 'Player was successfully created.'
-    else
-      render action: "upload"
-    end
-  end
-
   def upload
+    if params[:pgn]
+      #params[:pgn].read.split(/\n/).each {|line| puts line}
+      stats = IctkWrapper.createGamesFromPgn(params[:pgn].read.split(/\n/)) do |game|
+        Game.addGame game
+      end
+
+      flash[:notice] = "#{stats[0]} Games processed, #{stats[1]} successful, #{stats[2]} failed."
+      redirect_to :back
+    end
   end
 end

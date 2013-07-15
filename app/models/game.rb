@@ -9,9 +9,11 @@ class Game < Neo4j::Rails::Model
 
   has_one :startsAt
 
-  	def self.addGame gameInfo
+  	def self.addGame gameWrapper
 		Neo4j::Transaction.run do
 		
+			gameInfo = gameWrapper.gameInfo
+
 			white = Player.find_or_create_by(:name => gameInfo.white)
 			black = Player.find_or_create_by(:name => gameInfo.black)
 			event = Event.find(:name => gameInfo.event)
@@ -26,25 +28,23 @@ class Game < Neo4j::Rails::Model
 			black.playedBlack << game
 			event.playedGames << game
 			
-			gameId = game.neo_id
-			game.id = gameId
 			
-			game.halfturns = gameInfo.positions.count
-			x = gameInfo.positions.count-1
+			game.halfturns = gameWrapper.moves.count
+			x = game.halfturns-1
 			lastPos = nil
 			pos = nil
-			gameInfo.positions.reverse_each do |fen|
+			gameWrapper.moves.reverse_each do |move|
 				lastPos = pos
-				pos = Position.find_or_create_by(:fen => fen)
+				pos = Position.find_or_create_by(:fen => move[0])
 				
 				if lastPos
-					Move.create(:moveTo, pos, lastPos, :gameId => gameId, :nHalfturns => x, :move => gameInfo.moves[x])
+					Move.create(:moveTo, pos, lastPos, :gameId => game.id, :nHalfturns => x, :move => move[1])
 				end
 				
 				x-=1
 			end
 		
-			Move.create(:startsAt,game,pos, :gameId => gameId)
+			Move.create(:startsAt,game,pos, :gameId => game.id)
 		end
 	end
 end

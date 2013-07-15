@@ -25,7 +25,7 @@
     <td><%= @game.date %></td>
     <td><%= @game.site %></td>
     <td><%= @game.halfturns %></td>
-    <td><%= @game.result %></1+(td>)
+    <td><%= @game.result %></td>
     <td><%= @game.mode %></td>
   </tr>
 </table>
@@ -38,13 +38,23 @@
  
     <% if k%2 ==0 %>
      <tr>
-      <td><%=1+(k/2)%></td>
+      <td><%="#{1+(k/2)}."%></td>
       <td><%= link_to move.move, position_game_path(move.start_node,@game) %>
     <% else %>
       <td><%= link_to move.move, position_game_path(move.start_node,@game) %></td>
      </tr>
     <% end %>
     <% k+=1 %>
+  <% end %>
+  <% if k%2 ==0 %>
+   <tr>
+    <td><%="#{1+(k/2)}."%></td>
+    <td><%= link_to @game.result, position_game_path(moves.last.end_node,@game) %>
+    <td></td>
+   </tr>
+  <% else %>
+    <td><%= link_to @game.result, position_game_path(moves.last.end_node,@game) %></td>
+   </tr>
   <% end %>
 </table>
 
