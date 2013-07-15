@@ -12,11 +12,7 @@ class Position < Neo4j::Rails::Model
 	end
 
   	def games
-		games = Hash.new
-		self.rels(:both, :moveTo).each do |rel|
-			games[rel.gameId] = Game.find(:id => rel.gameId) unless games[rel.gameId]
-		end
-		games.values
+  		self.incoming(:positions)
 	end
 
 	def outgoingMoves
