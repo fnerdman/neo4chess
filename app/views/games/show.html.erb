@@ -30,8 +30,10 @@
   </tr>
 </table>
 
-<p>Game Moves</p>
 <% positions = @game.positionLinks %>
+<% nHalfturns = 0 %>
+<p>Game Moves</p>
+
 <table>
   <% k=0 %>
   <% positions.each do |pos| %>
@@ -39,9 +41,19 @@
     <% if k%2 ==0 %>
      <tr>
       <td><%="#{1+(k/2)}."%></td>
-      <td><%= link_to pos.move, position_game_path(pos.end_node,@game) %>
+      <% if pos.end_node.id == @position.id %>
+        <% nHalfturns = pos.nHalfturns %>
+        <td><b><%= link_to pos.move, position_game_path(pos.end_node,@game) %></b></td>
+      <% else %>
+        <td><%= link_to pos.move, position_game_path(pos.end_node,@game) %></td>
+      <% end %>
     <% else %>
-      <td><%= link_to pos.move, position_game_path(pos.end_node,@game) %></td>
+      <% if pos.end_node.id == @position.id %>
+        <td><b><%= link_to pos.move, position_game_path(pos.end_node,@game) %></b></td>
+        <% nHalfturns = pos.nHalfturns %>
+      <% else %>
+        <td><%= link_to pos.move, position_game_path(pos.end_node,@game) %></td>
+      <% end %>
      </tr>
     <% end %>
     <% k+=1 %>
@@ -51,5 +63,22 @@
    </tr>
   <% end %>
 </table>
+
+<p>
+  <b>Navigation</b>
+  </br>
+  <% if nHalfturns > 0 %>
+    <%= link_to 'Start', position_game_path(positions.first.end_node,@game) %>, 
+    <%= link_to 'Backward', position_game_path(positions[nHalfturns-1].end_node,@game) %>, 
+  <% else %>
+    Start, Backward, 
+  <% end %>
+  <% if nHalfturns+1 < @game.halfturns %>
+    <%= link_to 'Forward', position_game_path(positions[nHalfturns+1].end_node,@game) %>, 
+    <%= link_to 'End', position_game_path(positions.last.end_node,@game) %>
+  <% else %>
+    Forward, End
+  <% end %>
+</p>
 
 <%= render "positions/show", :object => @position %>

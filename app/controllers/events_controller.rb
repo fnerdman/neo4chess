@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = []
     if params[:q]
-      @events = SearchController.searchEvent params[:q]
+      @events = SearchController.searchEvent "*#{params[:q]}*"
     end
 
     respond_to do |format|

@@ -4,7 +4,7 @@ class PlayersController < ApplicationController
   def index
     @players = []
     if params[:q]
-      @players = SearchController.searchPlayer params[:q]
+      @players = SearchController.searchPlayer "*#{params[:q]}*"
     end
 
     respond_to do |format|

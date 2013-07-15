@@ -4,7 +4,7 @@ class PositionsController < ApplicationController
   def index
     @positions = []
     if params[:q]
-      @positions = SearchController.searchPosition params[:q]
+      @positions = SearchController.searchPosition "*#{params[:q]}*"
     end
 
     respond_to do |format|

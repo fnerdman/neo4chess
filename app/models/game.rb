@@ -44,12 +44,17 @@ class Game < Neo4j::Rails::Model
 			black = Player.find_or_create_by(:name => gameInfo.black)
 			event = Event.find(:name => gameInfo.event)
 			if !event
-				event = Event.create(:name => gameInfo.event)
-				event.date = gameInfo.date
-				event.site = gameInfo.site
+				event = Event.create(:name => gameInfo.event, :date => gameInfo.date, :site => gameInfo.site)
 			end
 
-			game = Game.create(:result => gameInfo.result, :date => gameInfo.date, :site => gameInfo.site)
+			gamename = "#{gameInfo.white} vs #{gameInfo.black} (#{gameInfo.result}), #{gameInfo.date.strftime("%d.%m.%Y")}"
+			gamename += ", Event: #{gameInfo.event}" unless gameInfo.event == ""
+			gamename += ", Site: #{gameInfo.site}" unless gameInfo.site == ""
+			gamename += ", Round: #{gameInfo.round}" unless gameInfo.round == ""
+			game = Game.find(:name => gamename)
+			if !game
+				game = Game.create(:name => gamename, :result => gameInfo.result, :date => gameInfo.date, :site => gameInfo.site)
+			end
 			white.playedWhite << game
 			black.playedBlack << game
 			event.playedGames << game
@@ -66,7 +71,7 @@ class Game < Neo4j::Rails::Model
 				Neo4j::Rails::Relationship.create(:positions, game, pos, :nHalfturns => x, :move => move[1])
 				
 				if lastPos
-					Move.create(:moveTo, pos, lastPos, :gameId => game.id, :nHalfturns => x, :move => move[1])
+					Move.create(:moveTo, pos, lastPos, :gameId => game.id, :move => move[1])
 				end
 
 				x-=1
