@@ -69,7 +69,7 @@ class IctkGame
 			fen = removeNumbers(@@fen.boardToString(m.getBoard))
 			comment = (m.getAnnotation ? m.getAnnotation.getComment : "")
 		end
-		@moves << [fen, @gameInfo.result, comment]
+		@moves << [fen, @gameInfo.result.toString, comment]
 	end
 	
 	attr_reader :positions, :moves, :gameInfo

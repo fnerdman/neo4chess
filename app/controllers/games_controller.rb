@@ -15,9 +15,9 @@ class GamesController < ApplicationController
   def index
     @games = []
     if params[:name]
-      @games = QueryController.searchGameByName(params[:name])
+      @games = SearchController.searchGameByName(params[:name])
     elsif params[:gid]
-      @games = QueryController.searchGameById(params[:gid])
+      @games = SearchController.searchGameById(params[:gid])
     end
 
     respond_to do |format|

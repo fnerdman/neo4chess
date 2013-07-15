@@ -1,7 +1,8 @@
+require 'lib/ictk_wrapper'
+
 class PgnController < ApplicationController
   def upload
     if params[:pgn]
-      #params[:pgn].read.split(/\n/).each {|line| puts line}
       stats = IctkWrapper.createGamesFromPgn(params[:pgn].read.split(/\n/)) do |game|
         Game.addGame game
       end

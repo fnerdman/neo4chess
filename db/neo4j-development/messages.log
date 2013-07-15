@@ -1,6 +1,6 @@
-2013-07-15 11:22:43.436+0000 INFO  [org.neo4j]: WARNING! You are using an unsupported Java runtime. Please use Oracle(R) Java(TM) Runtime Environment 7.
-2013-07-15 11:22:43.593+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics START ---
-2013-07-15 11:22:43.596+0000 INFO  [org.neo4j]: Neo4j Kernel properties:
+2013-07-15 15:10:27.188+0000 INFO  [org.neo4j]: WARNING! You are using an unsupported Java runtime. Please use Oracle(R) Java(TM) Runtime Environment 7.
+2013-07-15 15:10:27.318+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics START ---
+2013-07-15 15:10:27.320+0000 INFO  [org.neo4j]: Neo4j Kernel properties:
     neostore.propertystore.db.mapped_memory=357M
     neostore.nodestore.db.mapped_memory=99M
     identity_map=true
@@ -13,7 +13,7 @@
     migration_thread=false
     enable_rules=true
     storage_path=/home/john/ruby/rails_projects/neo4chess/db/neo4j-development
-2013-07-15 11:22:43.605+0000 INFO  [org.neo4j]: Diagnostics providers:
+2013-07-15 15:10:27.330+0000 INFO  [org.neo4j]: Diagnostics providers:
     org.neo4j.kernel.configuration.Config
     org.neo4j.kernel.info.DiagnosticsManager
     SYSTEM_MEMORY
@@ -25,37 +25,328 @@
     SYSTEM_PROPERTIES
     LINUX_SCHEDULERS
     NETWORK
-2013-07-15 11:22:43.607+0000 INFO  [org.neo4j]: System memory information:
+2013-07-15 15:10:27.331+0000 INFO  [org.neo4j]: System memory information:
     Total Physical memory: 3.79 GB
-    Free Physical memory: 1.18 GB
-    Committed virtual memory: 1.16 GB
+    Free Physical memory: 1.38 GB
+    Committed virtual memory: 1.06 GB
     Total swap space: 0.00 B
     Free swap space: 0.00 B
-2013-07-15 11:22:43.612+0000 INFO  [org.neo4j]: JVM memory information:
-    Free  memory: 103.18 MB
-    Total memory: 226.31 MB
+2013-07-15 15:10:27.336+0000 INFO  [org.neo4j]: JVM memory information:
+    Free  memory: 80.91 MB
+    Total memory: 186.50 MB
     Max   memory: 444.50 MB
     Garbage Collector: PS Scavenge: [PS Eden Space, PS Survivor Space]
     Garbage Collector: PS MarkSweep: [PS Eden Space, PS Survivor Space, PS Old Gen, PS Perm Gen]
-    Memory Pool: Code Cache (Non-heap memory): committed=3.88 MB, used=3.78 MB, max=48.00 MB, threshold=0.00 B
-    Memory Pool: PS Eden Space (Heap memory): committed=144.19 MB, used=83.05 MB, max=144.19 MB, threshold=?
-    Memory Pool: PS Survivor Space (Heap memory): committed=11.31 MB, used=0.00 B, max=11.31 MB, threshold=?
-    Memory Pool: PS Old Gen (Heap memory): committed=70.81 MB, used=40.08 MB, max=333.38 MB, threshold=0.00 B
-    Memory Pool: PS Perm Gen (Non-heap memory): committed=80.44 MB, used=42.52 MB, max=166.00 MB, threshold=0.00 B
-2013-07-15 11:22:43.617+0000 INFO  [org.neo4j]: Operating system information:
+    Memory Pool: Code Cache (Non-heap memory): committed=4.44 MB, used=4.10 MB, max=48.00 MB, threshold=0.00 B
+    Memory Pool: PS Eden Space (Heap memory): committed=129.50 MB, used=64.56 MB, max=131.50 MB, threshold=?
+    Memory Pool: PS Survivor Space (Heap memory): committed=16.56 MB, used=15.20 MB, max=16.56 MB, threshold=?
+    Memory Pool: PS Old Gen (Heap memory): committed=40.44 MB, used=25.83 MB, max=333.38 MB, threshold=0.00 B
+    Memory Pool: PS Perm Gen (Non-heap memory): committed=42.50 MB, used=42.49 MB, max=166.00 MB, threshold=0.00 B
+2013-07-15 15:10:27.341+0000 INFO  [org.neo4j]: Operating system information:
     Operating System: Linux; version: 3.2.0-4-amd64; arch: amd64; cpus: 4
     Max number of file descriptors: 4096
     Number of open file descriptors: 53
-    Process id: 25959@tux
+    Process id: 3152@tux
     Byte order: LITTLE_ENDIAN
     Local timezone: Europe/Berlin
-2013-07-15 11:22:43.619+0000 INFO  [org.neo4j]: JVM information:
+2013-07-15 15:10:27.344+0000 INFO  [org.neo4j]: JVM information:
     VM Name: OpenJDK 64-Bit Server VM
     VM Vendor: Sun Microsystems Inc.
     VM Version: 20.0-b12
     JIT compiler: HotSpot 64-Bit Tiered Compilers
     VM Arguments: [-Djdk.home=, -Djruby.home=/home/john/.rvm/rubies/jruby-1.7.4, -Djruby.script=jruby, -Djruby.shell=/bin/sh, -Djffi.boot.library.path=/home/john/.rvm/rubies/jruby-1.7.4/lib/native:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/x86_64-Linux:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/i386-Linux:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/arm-Linux, -Xmx500m, -Xss2048k, -Xbootclasspath/a:/home/john/.rvm/rubies/jruby-1.7.4/lib/jruby.jar]
-2013-07-15 11:22:43.620+0000 INFO  [org.neo4j]: Java classpath:
+2013-07-15 15:10:27.344+0000 INFO  [org.neo4j]: Java classpath:
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/geronimo-jta_1.1_spec-1.1.1.jar
+     [loader.2] file:/usr/lib/jvm/java-6-openjdk-common/jre/lib/ext/localedata.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/json-1.8.0-java/lib/json/ext/parser.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-jmx-1.9.jar
+     [loader.2] file:/usr/lib/jvm/java-6-openjdk-common/jre/lib/ext/sunjce_provider.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/json-1.8.0-java/lib/json/ext/generator.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/netx.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-core-2.3.0-java/lib/neo4j-core/jars/neo4jrb-adaptor.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-cypher-1.9.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4@global/gems/bouncy-castle-java-1.5.0147/lib/bcprov-jdk15on-147.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/therubyrhino_jar-1.7.4/jar/rhino-1.7R4.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/rt.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-lucene-index-1.9.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-graph-algo-1.9.jar
+     [loader.2] file:/usr/lib/jvm/java-6-openjdk-common/jre/lib/ext/sunpkcs11.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4@global/gems/jruby-openssl-0.8.8/lib/shared/jopenssl.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/rhino.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/modules/jdk.boot.jar
+     [loader.2] file:/usr/lib/x86_64-linux-gnu/jni/libatk-wrapper.so.0.0.18
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/lucene-core-3.6.2.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/org.apache.servicemix.bundles.jline-0.9.94_1.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-graph-matching-1.9.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/plugin.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-kernel-1.9.jar
+     [loader.2] file:/usr/share/java/java-atk-wrapper.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/jsse.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-shell-1.9.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-common/jre/lib/resources.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4@global/gems/bouncy-castle-java-1.5.0147/lib/bcpkix-jdk15on-147.jar
+     [bootstrap] /home/john/.rvm/rubies/jruby-1.7.4/lib/jruby.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/sunrsasign.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/server-api-1.9.jar
+     [loader.2] file:/usr/lib/jvm/java-6-openjdk-common/jre/lib/ext/pulse-java.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/concurrentlinkedhashmap-lru-1.3.1.jar
+     [loader.0] file:/home/john/ruby/rails_projects/neo4chess/lib/ictk.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/charsets.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-udc-1.9.jar
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/classes
+     [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/jce.jar
+     [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/scala-library-2.10.0.jar
+     [loader.2] file:/usr/lib/jvm/java-6-openjdk-common/jre/lib/ext/dnsns.jar
+     [classpath + loader.1] file:/home/john/ruby/rails_projects/neo4chess/
+2013-07-15 15:10:27.347+0000 INFO  [org.neo4j]: Library path:
+    /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/server
+    /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64
+    /usr/lib/jvm/java-6-openjdk-amd64/lib/amd64
+    /usr/java/packages/lib/amd64
+    /usr/lib/x86_64-linux-gnu/jni
+    /lib/x86_64-linux-gnu
+    /usr/lib/x86_64-linux-gnu
+    /usr/lib/jni
+    /lib
+    /usr/lib
+2013-07-15 15:10:27.347+0000 INFO  [org.neo4j]: System.properties:
+    jruby.home = /home/john/.rvm/rubies/jruby-1.7.4
+    sun.boot.library.path = /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64
+    path.separator = :
+    file.encoding.pkg = sun.io
+    sun.java.launcher = SUN_STANDARD
+    user.country = US
+    sun.os.patch.level = unknown
+    user.dir = /home/john/ruby/rails_projects/neo4chess
+    neo4j.ext.udc.source = neo4rb
+    jdk.home = 
+    sun.jnu.encoding = UTF-8
+    sun.management.compiler = HotSpot 64-Bit Tiered Compilers
+    jffi.boot.library.path = /home/john/.rvm/rubies/jruby-1.7.4/lib/native:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/x86_64-Linux:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/i386-Linux:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/arm-Linux
+    user.home = /home/john
+    user.timezone = Europe/Berlin
+    file.encoding = UTF-8
+    jruby.script = jruby
+    user.name = john
+    jruby.shell = /bin/sh
+    sun.java.command = org/jruby/Main script/rails s
+    sun.arch.data.model = 64
+    user.language = en
+    file.separator = /
+    sun.io.unicode.encoding = UnicodeLittle
+    sun.cpu.endian = little
+    sun.desktop = gnome
+    sun.cpu.isalist = 
+2013-07-15 15:10:27.348+0000 INFO  [org.neo4j]: Linux scheduler information:
+    noop deadline [cfq] 
+    none
+    none
+    none
+    none
+    none
+    none
+    none
+    none
+2013-07-15 15:10:27.350+0000 INFO  [org.neo4j]: Network information:
+    Interface vnet0:
+        address: fe80:0:0:0:b846:6cff:fee9:e96f%4
+        address: 172.16.0.1
+    Interface wlan0:
+        address: fe80:0:0:0:8a53:2eff:fe04:68a2%3
+        address: 192.168.178.64
+    Interface lo:
+        address: 0:0:0:0:0:0:0:1%1
+        address: 127.0.0.1
+2013-07-15 15:10:27.352+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics END ---
+2013-07-15 15:10:27.483+0000 INFO  [org.neo4j]: Creating new db @ /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore
+2013-07-15 15:10:27.550+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db] brickCount=0 brickSize=1038087b mappedMem=103809024b (storeSize=0b)
+2013-07-15 15:10:27.560+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db hit=1 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.658+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2013-07-15 15:10:27.665+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-07-15 15:10:27.669+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.676+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.684+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2013-07-15 15:10:27.685+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-07-15 15:10:27.686+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.strings] brickCount=0 brickSize=317696b mappedMem=317718528b (storeSize=128b)
+2013-07-15 15:10:27.686+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index.keys] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2013-07-15 15:10:27.692+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-07-15 15:10:27.695+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.arrays] brickCount=0 brickSize=360704b mappedMem=360710144b (storeSize=128b)
+2013-07-15 15:10:27.700+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db] brickCount=0 brickSize=3743382b mappedMem=374341632b (storeSize=0b)
+2013-07-15 15:10:27.703+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshipstore.db] brickCount=0 brickSize=4592742b mappedMem=459276288b (storeSize=0b)
+2013-07-15 15:10:27.703+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db] brickCount=0 brickSize=103806b mappedMem=103809024b (storeSize=9b)
+2013-07-15 15:10:27.704+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-07-15 15:10:27.717+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.724+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.733+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.strings hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.745+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index.keys hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.752+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.761+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.arrays hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.769+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.777+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshipstore.db hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.786+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:10:27.797+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore hit=0 miss=8 switches=0 ooe=0
+2013-07-15 15:10:27.813+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2013-07-15 15:10:27.814+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-07-15 15:10:27.815+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.strings] brickCount=0 brickSize=317696b mappedMem=317718528b (storeSize=128b)
+2013-07-15 15:10:27.815+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index.keys] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
+2013-07-15 15:10:27.816+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
+2013-07-15 15:10:27.816+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.arrays] brickCount=0 brickSize=360704b mappedMem=360710144b (storeSize=128b)
+2013-07-15 15:10:27.816+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db] brickCount=0 brickSize=3743382b mappedMem=374341632b (storeSize=0b)
+2013-07-15 15:10:27.817+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshipstore.db] brickCount=0 brickSize=4592742b mappedMem=459276288b (storeSize=0b)
+2013-07-15 15:10:27.817+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db] brickCount=0 brickSize=103806b mappedMem=103809024b (storeSize=9b)
+2013-07-15 15:10:27.818+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=54b)
+2013-07-15 15:10:27.851+0000 INFO  [org.neo4j]: Opened logical log [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/nioneo_logical.log.1] version=0, lastTxId=1 (clean)
+2013-07-15 15:10:27.864+0000 INFO  [org.neo4j]: TM new log: tm_tx_log.1
+2013-07-15 15:10:27.946+0000 INFO  [org.neo4j]: Opened logical log [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/index/lucene.log.1] version=0, lastTxId=1 (clean)
+2013-07-15 15:10:27.961+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions START ---
+2013-07-15 15:10:27.961+0000 INFO  [org.neo4j]: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId[time:1373901027483, id:3422518215747325189, store version: 13561656364791302]
+2013-07-15 15:10:27.962+0000 INFO  [org.neo4j]: Kernel version: Neo4j - Graph Database Kernel 1.9
+2013-07-15 15:10:27.962+0000 INFO  [org.neo4j]: Neo4j component versions:
+2013-07-15 15:10:27.963+0000 INFO  [org.neo4j]:   Neo4j - Graph Database Kernel 1.9
+2013-07-15 15:10:27.963+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions END ---
+2013-07-15 15:10:27.969+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS START ---
+2013-07-15 15:10:27.970+0000 INFO  [org.neo4j]: Store versions:
+    Store versions:
+      NeoStore v0.A.0
+      NodeStore v0.A.0
+      RelationshipStore v0.A.0
+      RelationshipTypeStore v0.A.0
+      PropertyStore v0.A.0
+      PropertyIndexStore v0.A.0
+      StringPropertyStore v0.A.0
+      ArrayPropertyStore v0.A.0
+2013-07-15 15:10:27.970+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS END ---
+2013-07-15 15:10:27.970+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE START ---
+2013-07-15 15:10:27.970+0000 INFO  [org.neo4j]: Id usage:
+    Id usage:
+      NodeStore: used=1 high=0
+      RelationshipStore: used=0 high=-1
+      RelationshipTypeStore: used=0 high=-1
+      PropertyStore: used=0 high=-1
+      PropertyIndexStore: used=0 high=-1
+      StringPropertyStore: used=1 high=0
+      ArrayPropertyStore: used=1 high=0
+2013-07-15 15:10:27.971+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE END ---
+2013-07-15 15:10:27.971+0000 INFO  [org.neo4j]: --- STARTED diagnostics for PERSISTENCE_WINDOW_POOL_STATS START ---
+2013-07-15 15:10:27.971+0000 INFO  [org.neo4j]: --- STARTED diagnostics for PERSISTENCE_WINDOW_POOL_STATS END ---
+2013-07-15 15:10:27.972+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles START ---
+2013-07-15 15:10:27.972+0000 INFO  [org.neo4j]: Disk space on partition (Total / Free / Free %): 46168203264 / 5452959744 / 11
+Storage files: (filename : modification date - size)
+      neostore.relationshiptypestore.db.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      store_lock: 2013-07-15T17:10:27+0200 - 0.00 B
+      neostore.propertystore.db.strings.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      neostore.propertystore.db.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      neostore.propertystore.db.index.keys.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      lock: 2013-07-15T17:10:27+0200 - 0.00 B
+      nioneo_logical.log.active: 2013-07-15T17:10:27+0200 - 4.00 B
+      neostore.propertystore.db.index: 2013-07-15T17:10:27+0200 - 0.00 B
+      index:
+        lucene-store.db: 2013-07-15T17:10:27+0200 - 40.00 B
+        lucene.log.active: 2013-07-15T17:10:27+0200 - 4.00 B
+        lucene.log.1: 2013-07-15T17:10:27+0200 - 16.00 B
+      - Total: 2013-07-15T17:10:27+0200 - 60.00 B
+      neostore.propertystore.db.index.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      messages.log: 2013-07-15T17:10:27+0200 - 18.39 kB
+      neostore.nodestore.db.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      active_tx_log: 2013-07-15T17:10:27+0200 - 11.00 B
+      neostore.relationshiptypestore.db.names.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      neostore.propertystore.db.arrays.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      neostore.relationshipstore.db: 2013-07-15T17:10:27+0200 - 0.00 B
+      neostore: 2013-07-15T17:10:27+0200 - 54.00 B
+      neostore.propertystore.db.strings: 2013-07-15T17:10:27+0200 - 128.00 B
+      neostore.relationshiptypestore.db.names: 2013-07-15T17:10:27+0200 - 38.00 B
+      neostore.propertystore.db: 2013-07-15T17:10:27+0200 - 0.00 B
+      neostore.relationshiptypestore.db: 2013-07-15T17:10:27+0200 - 0.00 B
+      nioneo_logical.log.1: 2013-07-15T17:10:27+0200 - 16.00 B
+      neostore.nodestore.db: 2013-07-15T17:10:27+0200 - 9.00 B
+      neostore.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      neostore.propertystore.db.index.keys: 2013-07-15T17:10:27+0200 - 38.00 B
+      neostore.relationshipstore.db.id: 2013-07-15T17:10:27+0200 - 9.00 B
+      tm_tx_log.1: 2013-07-15T17:10:27+0200 - 0.00 B
+      neostore.propertystore.db.arrays: 2013-07-15T17:10:27+0200 - 128.00 B
+2013-07-15 15:10:27.980+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles END ---
+2013-07-15 15:10:27.986+0000 INFO  [org.neo4j]: Started - database is now available
+2013-07-15 15:10:27.988+0000 INFO  [org.neo4j]: GC Monitor started. 
+2013-07-15 15:10:29.706+0000 INFO  [org.neo4j]: GC Monitor: Application threads blocked for an additional 316ms [total block time: 0.316s]
+2013-07-15 15:11:10.352+0000 INFO  [org.neo4j]: GC Monitor: Application threads blocked for an additional 386ms [total block time: 0.702s]
+2013-07-15 15:11:54.876+0000 INFO  [org.neo4j]: GC Monitor: Application threads blocked for an additional 382ms [total block time: 1.084s]
+2013-07-15 15:12:45.769+0000 INFO  [org.neo4j]: GC Monitor: Application threads blocked for an additional 617ms [total block time: 1.701s]
+2013-07-15 15:45:33.025+0000 INFO  [org.neo4j]: Stopping - database is now unavailable
+2013-07-15 15:45:33.026+0000 INFO  [org.neo4j]: GC Monitor stopped. 
+2013-07-15 15:45:33.131+0000 INFO  [org.neo4j]: Closed log /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/index/lucene.log
+2013-07-15 15:45:33.153+0000 INFO  [org.neo4j]: TM shutting down
+2013-07-15 15:45:33.161+0000 INFO  [org.neo4j]: Closed log /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/nioneo_logical.log
+2013-07-15 15:45:33.164+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names hit=0 miss=11 switches=0 ooe=0
+2013-07-15 15:45:33.172+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db hit=0 miss=11 switches=0 ooe=0
+2013-07-15 15:45:33.181+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.strings hit=13878 miss=0 switches=0 ooe=0
+2013-07-15 15:45:33.189+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index.keys hit=0 miss=11 switches=0 ooe=0
+2013-07-15 15:45:33.196+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index hit=0 miss=11 switches=0 ooe=0
+2013-07-15 15:45:33.204+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.arrays hit=0 miss=0 switches=0 ooe=0
+2013-07-15 15:45:33.213+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db hit=78560 miss=0 switches=0 ooe=0
+2013-07-15 15:45:33.222+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshipstore.db hit=51954 miss=0 switches=0 ooe=0
+2013-07-15 15:45:33.232+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db hit=21038 miss=0 switches=0 ooe=0
+2013-07-15 15:45:33.241+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore hit=0 miss=288 switches=0 ooe=0
+2013-07-15 15:45:33.248+0000 INFO  [org.neo4j]: NeoStore closed
+2013-07-15 15:45:33.248+0000 INFO  [org.neo4j]: --- STOPPING diagnostics START ---
+2013-07-15 15:45:33.249+0000 INFO  [org.neo4j]: --- STOPPING diagnostics END ---
+2013-07-15 15:46:03.379+0000 INFO  [org.neo4j]: WARNING! You are using an unsupported Java runtime. Please use Oracle(R) Java(TM) Runtime Environment 7.
+2013-07-15 15:46:03.529+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics START ---
+2013-07-15 15:46:03.531+0000 INFO  [org.neo4j]: Neo4j Kernel properties:
+    neostore.propertystore.db.mapped_memory=357M
+    neostore.nodestore.db.mapped_memory=99M
+    identity_map=true
+    timestamps=true
+    neostore.relationshipstore.db.mapped_memory=438M
+    neostore.propertystore.db.strings.mapped_memory=303M
+    store_dir=/home/john/ruby/rails_projects/neo4chess/db/neo4j-development
+    online_backup_enabled=false
+    neostore.propertystore.db.arrays.mapped_memory=344M
+    migration_thread=false
+    enable_rules=true
+    storage_path=/home/john/ruby/rails_projects/neo4chess/db/neo4j-development
+2013-07-15 15:46:03.542+0000 INFO  [org.neo4j]: Diagnostics providers:
+    org.neo4j.kernel.configuration.Config
+    org.neo4j.kernel.info.DiagnosticsManager
+    SYSTEM_MEMORY
+    JAVA_MEMORY
+    OPERATING_SYSTEM
+    JAVA_VIRTUAL_MACHINE
+    CLASSPATH
+    LIBRARY_PATH
+    SYSTEM_PROPERTIES
+    LINUX_SCHEDULERS
+    NETWORK
+2013-07-15 15:46:03.543+0000 INFO  [org.neo4j]: System memory information:
+    Total Physical memory: 3.79 GB
+    Free Physical memory: 1.23 GB
+    Committed virtual memory: 1.13 GB
+    Total swap space: 0.00 B
+    Free swap space: 0.00 B
+2013-07-15 15:46:03.549+0000 INFO  [org.neo4j]: JVM memory information:
+    Free  memory: 125.04 MB
+    Total memory: 186.44 MB
+    Max   memory: 444.50 MB
+    Garbage Collector: PS Scavenge: [PS Eden Space, PS Survivor Space]
+    Garbage Collector: PS MarkSweep: [PS Eden Space, PS Survivor Space, PS Old Gen, PS Perm Gen]
+    Memory Pool: Code Cache (Non-heap memory): committed=4.19 MB, used=3.74 MB, max=48.00 MB, threshold=0.00 B
+    Memory Pool: PS Eden Space (Heap memory): committed=129.38 MB, used=19.70 MB, max=131.38 MB, threshold=?
+    Memory Pool: PS Survivor Space (Heap memory): committed=16.63 MB, used=15.31 MB, max=16.63 MB, threshold=?
+    Memory Pool: PS Old Gen (Heap memory): committed=40.44 MB, used=26.39 MB, max=333.38 MB, threshold=0.00 B
+    Memory Pool: PS Perm Gen (Non-heap memory): committed=41.94 MB, used=41.90 MB, max=166.00 MB, threshold=0.00 B
+2013-07-15 15:46:03.554+0000 INFO  [org.neo4j]: Operating system information:
+    Operating System: Linux; version: 3.2.0-4-amd64; arch: amd64; cpus: 4
+    Max number of file descriptors: 4096
+    Number of open file descriptors: 52
+    Process id: 4647@tux
+    Byte order: LITTLE_ENDIAN
+    Local timezone: Europe/Berlin
+2013-07-15 15:46:03.556+0000 INFO  [org.neo4j]: JVM information:
+    VM Name: OpenJDK 64-Bit Server VM
+    VM Vendor: Sun Microsystems Inc.
+    VM Version: 20.0-b12
+    JIT compiler: HotSpot 64-Bit Tiered Compilers
+    VM Arguments: [-Djdk.home=, -Djruby.home=/home/john/.rvm/rubies/jruby-1.7.4, -Djruby.script=jruby, -Djruby.shell=/bin/sh, -Djffi.boot.library.path=/home/john/.rvm/rubies/jruby-1.7.4/lib/native:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/x86_64-Linux:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/i386-Linux:/home/john/.rvm/rubies/jruby-1.7.4/lib/native/arm-Linux, -Xmx500m, -Xss2048k, -Xbootclasspath/a:/home/john/.rvm/rubies/jruby-1.7.4/lib/jruby.jar]
+2013-07-15 15:46:03.557+0000 INFO  [org.neo4j]: Java classpath:
      [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/geronimo-jta_1.1_spec-1.1.1.jar
      [loader.2] file:/usr/lib/jvm/java-6-openjdk-common/jre/lib/ext/localedata.jar
      [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/json-1.8.0-java/lib/json/ext/parser.jar
@@ -90,7 +381,6 @@
      [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/server-api-1.9.jar
      [loader.2] file:/usr/lib/jvm/java-6-openjdk-common/jre/lib/ext/pulse-java.jar
      [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/concurrentlinkedhashmap-lru-1.3.1.jar
-     [loader.0] file:/home/john/ruby/rails_projects/neo4chess/lib/ictk.jar
      [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/charsets.jar
      [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/neo4j-udc-1.9.jar
      [bootstrap] /usr/lib/jvm/java-6-openjdk-amd64/jre/classes
@@ -98,7 +388,7 @@
      [loader.0] file:/home/john/.rvm/gems/jruby-1.7.4/gems/neo4j-community-1.9-java/lib/neo4j-community/jars/scala-library-2.10.0.jar
      [loader.2] file:/usr/lib/jvm/java-6-openjdk-common/jre/lib/ext/dnsns.jar
      [classpath + loader.1] file:/home/john/ruby/rails_projects/neo4chess/
-2013-07-15 11:22:43.622+0000 INFO  [org.neo4j]: Library path:
+2013-07-15 15:46:03.559+0000 INFO  [org.neo4j]: Library path:
     /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64/server
     /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64
     /usr/lib/jvm/java-6-openjdk-amd64/lib/amd64
@@ -109,7 +399,7 @@
     /usr/lib/jni
     /lib
     /usr/lib
-2013-07-15 11:22:43.623+0000 INFO  [org.neo4j]: System.properties:
+2013-07-15 15:46:03.560+0000 INFO  [org.neo4j]: System.properties:
     jruby.home = /home/john/.rvm/rubies/jruby-1.7.4
     sun.boot.library.path = /usr/lib/jvm/java-6-openjdk-amd64/jre/lib/amd64
     path.separator = :
@@ -137,7 +427,7 @@
     sun.cpu.endian = little
     sun.desktop = gnome
     sun.cpu.isalist = 
-2013-07-15 11:22:43.623+0000 INFO  [org.neo4j]: Linux scheduler information:
+2013-07-15 15:46:03.560+0000 INFO  [org.neo4j]: Linux scheduler information:
     noop deadline [cfq] 
     none
     none
@@ -147,7 +437,7 @@
     none
     none
     none
-2013-07-15 11:22:43.625+0000 INFO  [org.neo4j]: Network information:
+2013-07-15 15:46:03.563+0000 INFO  [org.neo4j]: Network information:
     Interface vnet0:
         address: fe80:0:0:0:b846:6cff:fee9:e96f%4
         address: 172.16.0.1
@@ -157,55 +447,28 @@
     Interface lo:
         address: 0:0:0:0:0:0:0:1%1
         address: 127.0.0.1
-2013-07-15 11:22:43.627+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics END ---
-2013-07-15 11:22:43.798+0000 INFO  [org.neo4j]: Creating new db @ /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore
-2013-07-15 11:22:43.858+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db] brickCount=0 brickSize=1038087b mappedMem=103809024b (storeSize=0b)
-2013-07-15 11:22:43.868+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db hit=1 miss=0 switches=0 ooe=0
-2013-07-15 11:22:43.971+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
-2013-07-15 11:22:43.982+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
-2013-07-15 11:22:43.986+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:43.993+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.001+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
-2013-07-15 11:22:44.002+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
-2013-07-15 11:22:44.003+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.strings] brickCount=0 brickSize=317696b mappedMem=317718528b (storeSize=128b)
-2013-07-15 11:22:44.003+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index.keys] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
-2013-07-15 11:22:44.007+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
-2013-07-15 11:22:44.009+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.arrays] brickCount=0 brickSize=360704b mappedMem=360710144b (storeSize=128b)
-2013-07-15 11:22:44.016+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db] brickCount=0 brickSize=3743382b mappedMem=374341632b (storeSize=0b)
-2013-07-15 11:22:44.022+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshipstore.db] brickCount=0 brickSize=4592742b mappedMem=459276288b (storeSize=0b)
-2013-07-15 11:22:44.022+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db] brickCount=0 brickSize=103806b mappedMem=103809024b (storeSize=9b)
-2013-07-15 11:22:44.023+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
-2013-07-15 11:22:44.039+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.046+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.055+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.strings hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.063+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index.keys hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.071+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.086+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.arrays hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.097+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.105+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshipstore.db hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.116+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db hit=0 miss=0 switches=0 ooe=0
-2013-07-15 11:22:44.127+0000 INFO  [org.neo4j]: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore hit=0 miss=8 switches=0 ooe=0
-2013-07-15 11:22:44.144+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
-2013-07-15 11:22:44.145+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
-2013-07-15 11:22:44.146+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.strings] brickCount=0 brickSize=317696b mappedMem=317718528b (storeSize=128b)
-2013-07-15 11:22:44.146+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index.keys] brickCount=0 brickSize=0b mappedMem=0b (storeSize=38b)
-2013-07-15 11:22:44.147+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index] brickCount=0 brickSize=0b mappedMem=0b (storeSize=0b)
-2013-07-15 11:22:44.148+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.arrays] brickCount=0 brickSize=360704b mappedMem=360710144b (storeSize=128b)
-2013-07-15 11:22:44.148+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db] brickCount=0 brickSize=3743382b mappedMem=374341632b (storeSize=0b)
-2013-07-15 11:22:44.148+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshipstore.db] brickCount=0 brickSize=4592742b mappedMem=459276288b (storeSize=0b)
-2013-07-15 11:22:44.149+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db] brickCount=0 brickSize=103806b mappedMem=103809024b (storeSize=9b)
-2013-07-15 11:22:44.149+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=54b)
-2013-07-15 11:22:44.197+0000 INFO  [org.neo4j]: Opened logical log [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/nioneo_logical.log.1] version=0, lastTxId=1 (clean)
-2013-07-15 11:22:44.218+0000 INFO  [org.neo4j]: TM new log: tm_tx_log.1
-2013-07-15 11:22:44.307+0000 INFO  [org.neo4j]: Opened logical log [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/index/lucene.log.1] version=0, lastTxId=1 (clean)
-2013-07-15 11:22:44.326+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions START ---
-2013-07-15 11:22:44.326+0000 INFO  [org.neo4j]: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId[time:1373887363798, id:1149958523324711538, store version: 13561656364791302]
-2013-07-15 11:22:44.326+0000 INFO  [org.neo4j]: Kernel version: Neo4j - Graph Database Kernel 1.9
-2013-07-15 11:22:44.327+0000 INFO  [org.neo4j]: Neo4j component versions:
-2013-07-15 11:22:44.328+0000 INFO  [org.neo4j]:   Neo4j - Graph Database Kernel 1.9
-2013-07-15 11:22:44.328+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions END ---
-2013-07-15 11:22:44.335+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS START ---
-2013-07-15 11:22:44.336+0000 INFO  [org.neo4j]: Store versions:
+2013-07-15 15:46:03.565+0000 INFO  [org.neo4j]: --- INITIALIZED diagnostics END ---
+2013-07-15 15:46:03.754+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db.names] brickCount=0 brickSize=0b mappedMem=0b (storeSize=456b)
+2013-07-15 15:46:03.763+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshiptypestore.db] brickCount=0 brickSize=0b mappedMem=0b (storeSize=55b)
+2013-07-15 15:46:03.764+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.strings] brickCount=5 brickSize=317696b mappedMem=317718528b (storeSize=1776512b)
+2013-07-15 15:46:03.765+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index.keys] brickCount=0 brickSize=0b mappedMem=0b (storeSize=456b)
+2013-07-15 15:46:03.768+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.index] brickCount=0 brickSize=0b mappedMem=0b (storeSize=99b)
+2013-07-15 15:46:03.770+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db.arrays] brickCount=0 brickSize=360704b mappedMem=360710144b (storeSize=128b)
+2013-07-15 15:46:03.775+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.propertystore.db] brickCount=8 brickSize=374330b mappedMem=374341632b (storeSize=3153228b)
+2013-07-15 15:46:03.780+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.relationshipstore.db] brickCount=3 brickSize=459261b mappedMem=459276288b (storeSize=1526316b)
+2013-07-15 15:46:03.783+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore.nodestore.db] brickCount=1 brickSize=103806b mappedMem=103809024b (storeSize=130554b)
+2013-07-15 15:46:03.784+0000 INFO  [org.neo4j]: [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/neostore] brickCount=0 brickSize=0b mappedMem=0b (storeSize=54b)
+2013-07-15 15:46:03.839+0000 INFO  [org.neo4j]: Opened logical log [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/nioneo_logical.log.1] version=1, lastTxId=273 (clean)
+2013-07-15 15:46:03.859+0000 INFO  [org.neo4j]: TM opening log: /home/john/ruby/rails_projects/neo4chess/db/neo4j-development/tm_tx_log.2
+2013-07-15 15:46:03.956+0000 INFO  [org.neo4j]: Opened logical log [/home/john/ruby/rails_projects/neo4chess/db/neo4j-development/index/lucene.log.1] version=1, lastTxId=267 (clean)
+2013-07-15 15:46:03.975+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions START ---
+2013-07-15 15:46:03.975+0000 INFO  [org.neo4j]: Graph Database: org.neo4j.kernel.EmbeddedGraphDatabase StoreId[time:1373901027483, id:3422518215747325189, store version: 13561656364791302]
+2013-07-15 15:46:03.975+0000 INFO  [org.neo4j]: Kernel version: Neo4j - Graph Database Kernel 1.9
+2013-07-15 15:46:03.975+0000 INFO  [org.neo4j]: Neo4j component versions:
+2013-07-15 15:46:03.976+0000 INFO  [org.neo4j]:   Neo4j - Graph Database Kernel 1.9
+2013-07-15 15:46:03.976+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:Versions END ---
+2013-07-15 15:46:03.983+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS START ---
+2013-07-15 15:46:03.985+0000 INFO  [org.neo4j]: Store versions:
     Store versions:
       NeoStore v0.A.0
       NodeStore v0.A.0
@@ -215,57 +478,154 @@
       PropertyIndexStore v0.A.0
       StringPropertyStore v0.A.0
       ArrayPropertyStore v0.A.0
-2013-07-15 11:22:44.336+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS END ---
-2013-07-15 11:22:44.337+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE START ---
-2013-07-15 11:22:44.337+0000 INFO  [org.neo4j]: Id usage:
+2013-07-15 15:46:03.985+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_VERSIONS END ---
+2013-07-15 15:46:03.985+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE START ---
+2013-07-15 15:46:03.985+0000 INFO  [org.neo4j]: Id usage:
     Id usage:
-      NodeStore: used=1 high=0
-      RelationshipStore: used=0 high=-1
-      RelationshipTypeStore: used=0 high=-1
-      PropertyStore: used=0 high=-1
-      PropertyIndexStore: used=0 high=-1
-      StringPropertyStore: used=1 high=0
+      NodeStore: used=14506 high=14505
+      RelationshipStore: used=46252 high=46251
+      RelationshipTypeStore: used=11 high=10
+      PropertyStore: used=76908 high=76907
+      PropertyIndexStore: used=11 high=10
+      StringPropertyStore: used=13879 high=13878
       ArrayPropertyStore: used=1 high=0
-2013-07-15 11:22:44.337+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE END ---
-2013-07-15 11:22:44.338+0000 INFO  [org.neo4j]: --- STARTED diagnostics for PERSISTENCE_WINDOW_POOL_STATS START ---
-2013-07-15 11:22:44.338+0000 INFO  [org.neo4j]: --- STARTED diagnostics for PERSISTENCE_WINDOW_POOL_STATS END ---
-2013-07-15 11:22:44.338+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles START ---
-2013-07-15 11:22:44.339+0000 INFO  [org.neo4j]: Disk space on partition (Total / Free / Free %): 46168203264 / 5453549568 / 11
+2013-07-15 15:46:03.986+0000 INFO  [org.neo4j]: --- STARTED diagnostics for NEO_STORE_ID_USAGE END ---
+2013-07-15 15:46:03.986+0000 INFO  [org.neo4j]: --- STARTED diagnostics for PERSISTENCE_WINDOW_POOL_STATS START ---
+2013-07-15 15:46:03.986+0000 INFO  [org.neo4j]: --- STARTED diagnostics for PERSISTENCE_WINDOW_POOL_STATS END ---
+2013-07-15 15:46:03.986+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles START ---
+2013-07-15 15:46:03.987+0000 INFO  [org.neo4j]: Disk space on partition (Total / Free / Free %): 46168203264 / 5421023232 / 11
 Storage files: (filename : modification date - size)
-      neostore.relationshiptypestore.db.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      store_lock: 2013-07-15T13:22:43+0200 - 0.00 B
-      neostore.propertystore.db.strings.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      neostore.propertystore.db.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      neostore.propertystore.db.index.keys.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      lock: 2013-07-15T13:22:44+0200 - 0.00 B
-      nioneo_logical.log.active: 2013-07-15T13:22:44+0200 - 4.00 B
-      neostore.propertystore.db.index: 2013-07-15T13:22:44+0200 - 0.00 B
+      neostore.relationshiptypestore.db.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      store_lock: 2013-07-15T17:10:27+0200 - 0.00 B
+      neostore.propertystore.db.strings.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      neostore.propertystore.db.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      neostore.propertystore.db.index.keys.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      lock: 2013-07-15T17:46:03+0200 - 0.00 B
+      nioneo_logical.log.active: 2013-07-15T17:46:03+0200 - 4.00 B
+      neostore.propertystore.db.index: 2013-07-15T17:46:03+0200 - 99.00 B
+      tm_tx_log.2: 2013-07-15T17:46:03+0200 - 0.00 B
       index:
-        lucene-store.db: 2013-07-15T13:22:44+0200 - 40.00 B
-        lucene.log.active: 2013-07-15T13:22:44+0200 - 4.00 B
-        lucene.log.1: 2013-07-15T13:22:44+0200 - 16.00 B
-      - Total: 2013-07-15T13:22:44+0200 - 60.00 B
-      neostore.propertystore.db.index.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      messages.log: 2013-07-15T13:22:44+0200 - 18.39 kB
-      neostore.nodestore.db.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      active_tx_log: 2013-07-15T13:22:44+0200 - 11.00 B
-      neostore.relationshiptypestore.db.names.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      neostore.propertystore.db.arrays.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      neostore.relationshipstore.db: 2013-07-15T13:22:44+0200 - 0.00 B
-      neostore: 2013-07-15T13:22:44+0200 - 54.00 B
-      neostore.propertystore.db.strings: 2013-07-15T13:22:44+0200 - 128.00 B
-      neostore.relationshiptypestore.db.names: 2013-07-15T13:22:44+0200 - 38.00 B
-      neostore.propertystore.db: 2013-07-15T13:22:44+0200 - 0.00 B
-      neostore.relationshiptypestore.db: 2013-07-15T13:22:44+0200 - 0.00 B
-      nioneo_logical.log.1: 2013-07-15T13:22:44+0200 - 16.00 B
-      neostore.nodestore.db: 2013-07-15T13:22:44+0200 - 9.00 B
-      neostore.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      neostore.propertystore.db.index.keys: 2013-07-15T13:22:44+0200 - 38.00 B
-      neostore.relationshipstore.db.id: 2013-07-15T13:22:44+0200 - 9.00 B
-      tm_tx_log.1: 2013-07-15T13:22:44+0200 - 0.00 B
-      neostore.propertystore.db.arrays: 2013-07-15T13:22:44+0200 - 128.00 B
-2013-07-15 11:22:44.346+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles END ---
-2013-07-15 11:22:44.357+0000 INFO  [org.neo4j]: Started - database is now available
-2013-07-15 11:22:44.359+0000 INFO  [org.neo4j]: GC Monitor started. 
-2013-07-15 11:23:17.377+0000 INFO  [org.neo4j]: GC Monitor: Application threads blocked for an additional 319ms [total block time: 0.319s]
-2013-07-15 11:23:48.473+0000 INFO  [org.neo4j]: GC Monitor: Application threads blocked for an additional 516ms [total block time: 0.835s]
+        lucene-store.db: 2013-07-15T17:45:33+0200 - 40.00 B
+        lucene.log.active: 2013-07-15T17:46:03+0200 - 4.00 B
+        lucene.log.v0: 2013-07-15T17:45:33+0200 - 9.51 MB
+        lucene:
+          relationship:
+            Move_exact:
+              _7z.cfs: 2013-07-15T17:13:23+0200 - 8.29 kB
+              _7u.cfs: 2013-07-15T17:13:19+0200 - 7.70 kB
+              _7s.prx: 2013-07-15T17:13:18+0200 - 57.88 kB
+              _7t.cfs: 2013-07-15T17:13:18+0200 - 10.22 kB
+              _7s.tii: 2013-07-15T17:13:18+0200 - 4.23 kB
+              _7w.cfs: 2013-07-15T17:13:21+0200 - 5.87 kB
+              _80.cfs: 2013-07-15T17:45:33+0200 - 6.36 kB
+              segments_1: 2013-07-15T17:45:33+0200 - 1.98 kB
+              _7x.cfs: 2013-07-15T17:13:22+0200 - 8.18 kB
+              _7v.cfs: 2013-07-15T17:13:20+0200 - 12.68 kB
+              _7s.frq: 2013-07-15T17:13:18+0200 - 402.90 kB
+              segments.gen: 2013-07-15T17:45:33+0200 - 20.00 B
+              _7s.fdt: 2013-07-15T17:13:18+0200 - 578.95 kB
+              _7y.cfs: 2013-07-15T17:13:22+0200 - 11.42 kB
+              _7s.fnm: 2013-07-15T17:13:18+0200 - 64.00 B
+              _7s.nrm: 2013-07-15T17:13:18+0200 - 57.89 kB
+              _7s.fdx: 2013-07-15T17:13:18+0200 - 115.77 kB
+              _7s.tis: 2013-07-15T17:13:18+0200 - 290.11 kB
+            - Total: 2013-07-15T17:45:33+0200 - 1.54 MB
+            Neo4j_Rails_Relationship_exact:
+              _7z.cfs: 2013-07-15T17:13:23+0200 - 12.52 kB
+              _7u.cfs: 2013-07-15T17:13:19+0200 - 11.63 kB
+              _7s.prx: 2013-07-15T17:13:18+0200 - 118.73 kB
+              _7t.cfs: 2013-07-15T17:13:18+0200 - 15.38 kB
+              _7s.tii: 2013-07-15T17:13:18+0200 - 5.76 kB
+              _7w.cfs: 2013-07-15T17:13:21+0200 - 8.81 kB
+              _80.cfs: 2013-07-15T17:45:33+0200 - 9.60 kB
+              segments_1: 2013-07-15T17:45:33+0200 - 1.98 kB
+              _7x.cfs: 2013-07-15T17:13:22+0200 - 12.38 kB
+              _7v.cfs: 2013-07-15T17:13:20+0200 - 19.09 kB
+              _7s.frq: 2013-07-15T17:13:18+0200 - 229.37 kB
+              segments.gen: 2013-07-15T17:45:33+0200 - 20.00 B
+              _7s.fdt: 2013-07-15T17:13:18+0200 - 1.20 MB
+              _7y.cfs: 2013-07-15T17:13:22+0200 - 17.24 kB
+              _7s.fnm: 2013-07-15T17:13:18+0200 - 56.00 B
+              _7s.nrm: 2013-07-15T17:13:18+0200 - 118.73 kB
+              _7s.fdx: 2013-07-15T17:13:18+0200 - 237.46 kB
+              _7s.tis: 2013-07-15T17:13:18+0200 - 395.15 kB
+            - Total: 2013-07-15T17:45:33+0200 - 2.38 MB
+          - Total: 2013-07-15T17:10:32+0200 - 3.93 MB
+          node:
+            Player_exact:
+              _50.fdx: 2013-07-15T17:13:12+0200 - 1.71 kB
+              _50.frq: 2013-07-15T17:13:12+0200 - 748.00 B
+              _53.cfs: 2013-07-15T17:13:18+0200 - 260.00 B
+              _50.prx: 2013-07-15T17:13:12+0200 - 438.00 B
+              _54.cfs: 2013-07-15T17:13:20+0200 - 262.00 B
+              segments_1: 2013-07-15T17:45:33+0200 - 1.13 kB
+              _50.tis: 2013-07-15T17:13:12+0200 - 4.30 kB
+              _50.nrm: 2013-07-15T17:13:12+0200 - 442.00 B
+              _50.fnm: 2013-07-15T17:13:12+0200 - 18.00 B
+              segments.gen: 2013-07-15T17:45:33+0200 - 20.00 B
+              _50.fdt: 2013-07-15T17:13:12+0200 - 4.00 kB
+              _51.cfs: 2013-07-15T17:13:13+0200 - 262.00 B
+              _52.cfs: 2013-07-15T17:13:14+0200 - 262.00 B
+              _50.tii: 2013-07-15T17:13:12+0200 - 97.00 B
+            - Total: 2013-07-15T17:45:33+0200 - 13.88 kB
+            Position_exact:
+              _7z.cfs: 2013-07-15T17:15:09+0200 - 7.42 kB
+              _7u.cfs: 2013-07-15T17:13:19+0200 - 14.12 kB
+              _7s.prx: 2013-07-15T17:13:18+0200 - 26.10 kB
+              _7t.cfs: 2013-07-15T17:13:18+0200 - 8.51 kB
+              _7s.tii: 2013-07-15T17:13:18+0200 - 7.45 kB
+              _7w.cfs: 2013-07-15T17:13:21+0200 - 8.13 kB
+              segments_1: 2013-07-15T17:45:33+0200 - 1.77 kB
+              _7x.cfs: 2013-07-15T17:13:22+0200 - 12.23 kB
+              _7v.cfs: 2013-07-15T17:13:20+0200 - 6.34 kB
+              _7s.frq: 2013-07-15T17:13:18+0200 - 62.14 kB
+              segments.gen: 2013-07-15T17:45:33+0200 - 20.00 B
+              _7s.fdt: 2013-07-15T17:13:18+0200 - 846.41 kB
+              _7y.cfs: 2013-07-15T17:13:22+0200 - 7.94 kB
+              _7s.fnm: 2013-07-15T17:13:18+0200 - 17.00 B
+              _7s.nrm: 2013-07-15T17:13:18+0200 - 26.11 kB
+              _7s.fdx: 2013-07-15T17:13:18+0200 - 104.42 kB
+              _7s.tis: 2013-07-15T17:13:18+0200 - 607.24 kB
+            - Total: 2013-07-15T17:45:33+0200 - 1.71 MB
+            Event_exact:
+              _3x.cfs: 2013-07-15T17:45:33+0200 - 252.00 B
+              _3w.fdt: 2013-07-15T17:13:21+0200 - 2.44 kB
+              _3w.frq: 2013-07-15T17:13:21+0200 - 380.00 B
+              segments_1: 2013-07-15T17:45:33+0200 - 506.00 B
+              _3w.fnm: 2013-07-15T17:13:21+0200 - 18.00 B
+              segments.gen: 2013-07-15T17:45:33+0200 - 20.00 B
+              _3w.prx: 2013-07-15T17:13:21+0200 - 254.00 B
+              _3w.tis: 2013-07-15T17:13:21+0200 - 2.66 kB
+              _3w.fdx: 2013-07-15T17:13:21+0200 - 1020.00 B
+              _3w.tii: 2013-07-15T17:13:21+0200 - 46.00 B
+              _3w.nrm: 2013-07-15T17:13:21+0200 - 258.00 B
+            - Total: 2013-07-15T17:45:33+0200 - 7.78 kB
+          - Total: 2013-07-15T17:10:28+0200 - 1.73 MB
+        - Total: 2013-07-15T17:10:32+0200 - 5.65 MB
+        lucene.log.1: 2013-07-15T17:46:03+0200 - 16.00 B
+      - Total: 2013-07-15T17:46:03+0200 - 15.16 MB
+      index.db: 2013-07-15T17:10:31+0200 - 527.00 B
+      neostore.propertystore.db.index.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      messages.log: 2013-07-15T17:46:03+0200 - 37.80 kB
+      neostore.nodestore.db.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      active_tx_log: 2013-07-15T17:12:47+0200 - 11.00 B
+      neostore.relationshiptypestore.db.names.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      neostore.propertystore.db.arrays.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      neostore.relationshipstore.db: 2013-07-15T17:46:03+0200 - 1.46 MB
+      neostore: 2013-07-15T17:46:03+0200 - 54.00 B
+      neostore.propertystore.db.strings: 2013-07-15T17:46:03+0200 - 1.69 MB
+      neostore.relationshiptypestore.db.names: 2013-07-15T17:46:03+0200 - 456.00 B
+      neostore.propertystore.db: 2013-07-15T17:46:03+0200 - 3.01 MB
+      neostore.relationshiptypestore.db: 2013-07-15T17:46:03+0200 - 55.00 B
+      nioneo_logical.log.1: 2013-07-15T17:46:03+0200 - 16.00 B
+      nioneo_logical.log.v0: 2013-07-15T17:45:33+0200 - 10.79 MB
+      neostore.nodestore.db: 2013-07-15T17:46:03+0200 - 127.49 kB
+      neostore.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      neostore.propertystore.db.index.keys: 2013-07-15T17:46:03+0200 - 456.00 B
+      neostore.relationshipstore.db.id: 2013-07-15T17:46:03+0200 - 9.00 B
+      tm_tx_log.1: 2013-07-15T17:12:47+0200 - 29.11 kB
+      neostore.propertystore.db.arrays: 2013-07-15T17:46:03+0200 - 128.00 B
+2013-07-15 15:46:04.020+0000 INFO  [org.neo4j]: --- STARTED diagnostics for KernelDiagnostics:StoreFiles END ---
+2013-07-15 15:46:04.026+0000 INFO  [org.neo4j]: Started - database is now available
+2013-07-15 15:46:04.029+0000 INFO  [org.neo4j]: GC Monitor started. 
+2013-07-15 15:46:07.183+0000 INFO  [org.neo4j]: GC Monitor: Application threads blocked for an additional 341ms [total block time: 0.341s]

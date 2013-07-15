@@ -3,24 +3,24 @@
   <%= @position.fen %>
 </p>
 
-<% @moves = QueryController.getOutgoingMoves(@position) %>
+<% @moves = @position.outgoingMoves %>
 <%= render 'positions/list', :object => @moves, :forward => true %>
 
-<% @moves = QueryController.getIncomingMoves(@position) %>
+<% @moves = @position.incomingMoves %>
 <%= render 'positions/list', :object => @moves, :forward => false %>
 
-<% @games = QueryController.getGames(@position)%>
+<% @games = @position.games %>
 <p>
   <b>There are <%= @games.count %> games containing this position.</b>
 </p>
 <%= render 'games/list', :object => @games %>
 
-<% @evaluations = QueryController.getEvaluations(@position)%>
+<% @evaluations = @position.evaluations %>
 <%= render 'evaluations/list', :object => @evaluations %>
 <% @evaluation = Evaluation.new %>
 <%= render 'evaluations/form', :object => @evaluation %>
 
-<% @comments = QueryController.getComments(@position)%>
+<% @comments = @position.comments %>
 <%= render 'comments/list', :object => @comments %>
 <% @comment = Comment.new %>
 <%= render 'comments/form', :object => @comment %>

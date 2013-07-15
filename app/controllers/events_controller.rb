@@ -2,10 +2,9 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    @events = []
     if params[:q]
-      @events = QueryController.searchEvent params[:q]
-    else
-      @events = Event.all
+      @events = SearchController.searchEvent params[:q]
     end
 
     respond_to do |format|

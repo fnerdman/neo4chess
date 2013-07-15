@@ -18,9 +18,9 @@
   </tr>
 
 <% @games.each do |game| %>
-  <% white = QueryController.getWhitePlayer game %>
-  <% black = QueryController.getBlackPlayer game %>
-  <% event = QueryController.getEvent game %>
+  <% white = game.whitePlayer %>
+  <% black = game.blackPlayer %>
+  <% event = game.event %>
   <tr>
     <td><%= game.id %></td>
     <td><%= game.name %></td>

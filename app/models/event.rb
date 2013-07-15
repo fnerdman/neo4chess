@@ -4,4 +4,8 @@ class Event < Neo4j::Rails::Model
   property :date, :type => DateTime
 
   has_n :playedGames
+
+  	def games
+		self.outgoing(:playedGames).to_a
+	end
 end

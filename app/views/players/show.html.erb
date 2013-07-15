@@ -4,8 +4,8 @@
   <b>Name:</b>
   <%= @player.name %>
 </p>
-<% @games = QueryController.getPlayerGames(@player) %>
-<% stats = QueryController.getPlayerStats(@player) %>
+<% @games = @player.games %>
+<% stats = @player.stats %>
 <p>
   <b>Total:</b>
   <%= stats[:all] %>

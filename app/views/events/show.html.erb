@@ -15,5 +15,5 @@
   <%= @event.date %>
 </p>
 
-<% @games = QueryController.getEventGames(@event)%>
+<% @games = @event.games%>
 <%= render 'games/list', :object => @games %>

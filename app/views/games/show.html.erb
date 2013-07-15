@@ -13,9 +13,9 @@
     <th>Result</th>
     <th>Mode</th>
   </tr>
-  <% white = QueryController.getWhitePlayer @game %>
-  <% black = QueryController.getBlackPlayer @game %>
-  <% event = QueryController.getEvent @game %>
+  <% white = @game.whitePlayer  %>
+  <% black = @game.blackPlayer %>
+  <% event = @game.event %>
   <tr>
     <td><%= @game.id %></td>
     <td><%= @game.name %></td>
@@ -31,29 +31,23 @@
 </table>
 
 <p>Game Moves</p>
-<% moves = QueryController.getGameMoves @game.id %>
+<% positions = @game.positionLinks %>
 <table>
   <% k=0 %>
-  <% moves.each do |move| %>
+  <% positions.each do |pos| %>
  
     <% if k%2 ==0 %>
      <tr>
       <td><%="#{1+(k/2)}."%></td>
-      <td><%= link_to move.move, position_game_path(move.start_node,@game) %>
+      <td><%= link_to pos.move, position_game_path(pos.end_node,@game) %>
     <% else %>
-      <td><%= link_to move.move, position_game_path(move.start_node,@game) %></td>
+      <td><%= link_to pos.move, position_game_path(pos.end_node,@game) %></td>
      </tr>
     <% end %>
     <% k+=1 %>
   <% end %>
-  <% if k%2 ==0 %>
-   <tr>
-    <td><%="#{1+(k/2)}."%></td>
-    <td><%= link_to @game.result, position_game_path(moves.last.end_node,@game) %>
+  <% if k%2!=0 %>
     <td></td>
-   </tr>
-  <% else %>
-    <td><%= link_to @game.result, position_game_path(moves.last.end_node,@game) %></td>
    </tr>
   <% end %>
 </table>

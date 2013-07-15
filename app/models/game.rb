@@ -8,6 +8,32 @@ class Game < Neo4j::Rails::Model
   property :site, :type => String
 
   has_one :startsAt
+  has_n :positions
+
+  	def whitePlayer
+		self.incoming(:playedWhite).first
+	end
+	
+	def blackPlayer
+		self.incoming(:playedBlack).first
+	end
+	
+	def event
+		self.incoming(:playedGames).first
+	end
+
+	def startingPosition
+		self.outgoing(:startsAt).first
+	end
+
+  	def positionLinks
+		poss = self.rels(:outgoing,:positions)
+		sequ = Array.new(poss.count)
+		poss.each do |pos|
+			sequ[pos.nHalfturns] = pos
+		end
+		sequ
+	end
 
   	def self.addGame gameWrapper
 		Neo4j::Transaction.run do
@@ -29,18 +55,20 @@ class Game < Neo4j::Rails::Model
 			event.playedGames << game
 			
 			
-			game.halfturns = gameWrapper.moves.count
-			x = game.halfturns-1
+			x = game.halfturns = gameWrapper.moves.count
+			x-=1
 			lastPos = nil
 			pos = nil
 			gameWrapper.moves.reverse_each do |move|
 				lastPos = pos
 				pos = Position.find_or_create_by(:fen => move[0])
+
+				Neo4j::Rails::Relationship.create(:positions, game, pos, :nHalfturns => x, :move => move[1])
 				
 				if lastPos
 					Move.create(:moveTo, pos, lastPos, :gameId => game.id, :nHalfturns => x, :move => move[1])
 				end
-				
+
 				x-=1
 			end
 		
