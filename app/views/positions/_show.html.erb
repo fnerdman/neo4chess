@@ -1,26 +1,151 @@
-<p>
-  <b>Fen:</b>
-  <%= @position.fen %>
-</p>
-
-<% @moves = @position.outgoingMoves %>
-<%= render 'positions/list', :object => @moves, :forward => true %>
-
-<% @moves = @position.incomingMoves %>
-<%= render 'positions/list', :object => @moves, :forward => false %>
-
 <% @games = @position.games %>
 <p>
-  <b>There are <%= @games.count %> games containing this position.</b>
+  <b>
+  There are <%= @games.count %> games containing this position. <%= link_to 'Show', root_path %>
+  <% #render 'games/list', :object => @games %>
+  </b>
 </p>
-<%= render 'games/list', :object => @games %>
+
+<div class="row-fluid">
+	
+	<div class="span3">
+		<% if @game %>
+			<ul class="nav nav-list">
+		 		<li class="nav-header">Game Info</li>
+		 		<% white = @game.whitePlayer  %>
+				<% black = @game.blackPlayer %>
+				<% event = @game.event %>
+			  	<table class="table table-hover table-condensed">
+					<tr>
+						<td>White</td>
+					    <td><%= link_to white.name, white %></td>
+					</tr>
+					<tr>
+						<td>Black</td>
+					    <td><%= link_to black.name, black %></td>
+					</tr>
+					<% if @game.event %>
+						<tr>
+							<td>Event</td>
+						    <td><%= link_to event.name, event %></td>
+						</tr>
+					<% end %>
+					<% if @game.site %>
+						<tr>
+							<td>Site</td>
+						    <td><%= @game.site %></td>
+						</tr>
+					<% end %>
+					<tr>
+						<td>Date</td>
+					    <td><%= @game.date.strftime("%d.%m.%Y") %></td>
+					</tr>
+					<tr>
+						<td>Result</td>
+					    <td><%= @game.result %></td>
+					</tr>
+					<% if @game.mode %>
+						<tr>
+							<td>Mode</td>
+						    <td><%= @game.mode %></td>
+						</tr>
+					<% end %>
+					<tr>
+						<td>ID</td>
+					    <td><%= @game.id %></td>
+					</tr>
+			  	</table>
+		 	</ul>
+		<% end %>
+
+		<% @moves = @position.outgoingMoves %>
+		<%= render 'positions/list', :object => @moves, :forward => true %>
+
+		<% @moves = @position.incomingMoves %>
+		<%= render 'positions/list', :object => @moves, :forward => false %>
+	</div>
+
+	<div class="span6">
+		<p>
+		  <b>Fen:</b>
+		  <%= @position.fen %>
+		</p>
+	</div>
+
+	<% if @game %>
+
+		<div class="span3">
+
+			<% positions = @game.positionLinks %>
+			<% nHalfturns = 0 %>
+			<ul class="nav nav-list">
+		 		<li class="nav-header">Game Moves</li>
+				  <% k=0 %>
+				  <% positions.each do |pos| %>
+				    <% if k%2 ==0 %>
+				     <%="#{1+(k/2)}."%>
+				      <% if pos.end_node.id == @position.id %>
+				        <% nHalfturns = pos.nHalfturns %>
+				        <b><%= link_to pos.move, position_game_path(pos.end_node,@game) %></b>
+				      <% else %>
+				        <%= link_to pos.move, position_game_path(pos.end_node,@game) %>
+				      <% end %>
+				    <% else %>
+				      <% if pos.end_node.id == @position.id %>
+				        <b><%= link_to pos.move, position_game_path(pos.end_node,@game) %></b>
+				        <% nHalfturns = pos.nHalfturns %>
+				      <% else %>
+				        <%= link_to pos.move, position_game_path(pos.end_node,@game) %>
+				      <% end %>
+				    <% end %>
+				    <% k+=1 %>
+				  <% end %>
+			</ul>
+		</div>	
+	<% end %>
+</div>
+<% if @game %>
+	<div class="row-fluid">
+		<div class="span6 offset3">
+			<p class="text-center">
+			  <% if nHalfturns > 0 %>
+			    <%= link_to 'Start', position_game_path(positions.first.end_node,@game) %>, 
+			    <%= link_to 'Backward', position_game_path(positions[nHalfturns-1].end_node,@game) %>, 
+			  <% else %>
+			    Start, Backward, 
+			  <% end %>
+			  <% if nHalfturns+1 < @game.halfturns %>
+			    <%= link_to 'Forward', position_game_path(positions[nHalfturns+1].end_node,@game) %>, 
+			    <%= link_to 'End', position_game_path(positions.last.end_node,@game) %>
+			  <% else %>
+			    Forward, End
+			  <% end %>
+			</p>
+		</div>
+	</div>
+<% end %>
 
 <% @evaluations = @position.evaluations %>
-<%= render 'evaluations/list', :object => @evaluations %>
-<% @evaluation = Evaluation.new %>
-<%= render 'evaluations/form', :object => @evaluation %>
+<p>
+  <b>
+  There are <%= @evaluations.count %> Evaluations for this position. 
+  <%= link_to 'Show', root_path %>
+  <%= link_to 'Add', root_path %>
+  
+  </b>
+</p>
 
-<% @comments = @position.comments %>
-<%= render 'comments/list', :object => @comments %>
-<% @comment = Comment.new %>
-<%= render 'comments/form', :object => @comment %>
+<div class="row-fluid">
+	<div class="span4">
+		<%= render 'evaluations/list', :object => @evaluations %>
+		<% @evaluation = Evaluation.new %>
+		<%= render 'evaluations/form', :object => @evaluation %>
+	</div>
+	<div class="span6">
+		<% @comments = @position.comments %>
+		<%= render 'comments/list', :object => @comments %>
+		<% @comment = Comment.new %>
+		<%= render 'comments/form', :object => @comment %>
+	</div>
+</div>
+

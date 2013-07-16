@@ -7,6 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= nav_bar :brand => image_tag("logo.png", :size => "22x22")+" neo4chess", :brand_link => root_path, :inverse => true, :responsive => true, :fixed => :top do %>
+    <% menu_group do %>
+        <%= menu_item "Traverse", traverse_home_index_path%>
+        <%= menu_item "Search", search_index_path %>
+        <%= menu_item "Upload", upload_pgn_index_path %>
+    <% end %>
+<% end %>
 
 <%= yield %>
 

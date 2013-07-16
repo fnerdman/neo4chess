@@ -38,6 +38,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    commonjs (0.2.6)
     diff-lcs (1.2.4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -52,6 +53,11 @@ GEM
       bouncy-castle-java (>= 1.5.0147)
     json (1.8.0)
     json (1.8.0-java)
+    less (2.3.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
+      actionpack (>= 3.1)
+      less (~> 2.3.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -142,6 +148,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   jruby-openssl
+  less-rails
   neo4j (>= 2.2.3)
   rails (= 3.2.13)
   rspec-rails

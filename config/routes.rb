@@ -1,20 +1,24 @@
 Neo4chess::Application.routes.draw do
 
-  get "home/index"
-
-  get "search/index"
-
-
-  get "pgn/upload"
-  post "pgn/upload"#, to: 'pgn#uploadpost'
-
-  get 'search', to: 'search#index'
-
+  resources :search, :only => [:index]
   resources :players, :only => [:index, :show]
   resources :events, :only => [:index, :show]
   resources :games, :only => [:index]
 
-  resources :positions,  :only => [:index, :show] do #, :shallow => true
+  resources :home, :only => [:index] do
+    collection do
+      get "traverse"
+    end
+  end
+
+  resources :pgn, :only => [] do
+    collection do
+      get "upload"
+      post "upload"
+    end
+  end
+
+  resources :positions,  :only => [:index, :show] do
     resources :comments, :only => [:create, :destroy]
     resources :evaluations, :only => [:create, :destroy]
     resources :games, :only => [:show]

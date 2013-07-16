@@ -2,43 +2,44 @@
 
 <h1>Listing games</h1>
 
-<table>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>White</th>
-    <th>Black</th>
-    <th>Event</th>
-    <th>Date</th>
-    <th>Site</th>
-    <th>Halfturns</th>
-    <th>Result</th>
-    <th>Mode</th>
-    <th></th>
-  </tr>
-
-<% @games.each do |game| %>
-  <% white = game.whitePlayer %>
-  <% black = game.blackPlayer %>
-  <% event = game.event %>
-  <tr>
-    <td><%= game.id %></td>
-    <td><%= game.name %></td>
-    <td><%= link_to white.name, white %></td>
-    <td><%= link_to black.name, black %></td>
-    <td><%= link_to event.name, event %></td>
-    <td><%= game.date %></td>
-    <td><%= game.site %></td>
-    <td><%= game.halfturns %></td>
-    <td><%= game.result %></td>
-    <td><%= game.mode %></td>
-    <td>
-      <% if individual %>
-        <% @position = game.outgoing(:startsAt) %>
-      <% end %>
-      <%= link_to 'Show', position_game_path(@position, game) %>
-    </td>
-  </tr>
-<% end %>
+<table class="table table-hover table-condensed">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>White</th>
+      <th>Black</th>
+      <th>Event</th>
+      <th>Date</th>
+      <th>Site</th>
+      <th>Halfturns</th>
+      <th>Result</th>
+      <th>Mode</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+    <% white = game.whitePlayer %>
+    <% black = game.blackPlayer %>
+    <% event = game.event %>
+    <tr>
+      <td><%= game.id %></td>
+      <td><%= link_to white.name, white %></td>
+      <td><%= link_to black.name, black %></td>
+      <td><%= link_to event.name, event %></td>
+      <td><%= game.date.strftime("%d.%m.%Y") %></td>
+      <td><%= game.site %></td>
+      <td><%= game.halfturns %></td>
+      <td><%= game.result %></td>
+      <td><%= game.mode %></td>
+      <td>
+        <% if individual %>
+          <% @position = game.outgoing(:startsAt) %>
+        <% end %>
+        <%= link_to 'Show', position_game_path(@position, game) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
 
