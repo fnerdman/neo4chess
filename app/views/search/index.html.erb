@@ -1,26 +1,40 @@
-<p id="notice"><%= notice %></p>
-<%= form_tag("players", method: "get") do %>
-  <%= label_tag(:q, "Player Name:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
-<%= form_tag("games", method: "get") do %>
-  <%= label_tag(:name, "Game Name:") %>
-  <%= text_field_tag(:name) %>
-  <%= submit_tag("Search") %>
-<% end %>
-<%= form_tag("games", method: "get") do %>
-  <%= label_tag(:gid, "Game Id:") %>
-  <%= text_field_tag(:gid) %>
-  <%= submit_tag("Search") %>
-<% end %>
-<%= form_tag("positions", method: "get") do %>
-  <%= label_tag(:q, "Position in FEN:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
-<%= form_tag("events", method: "get") do %>
-  <%= label_tag(:q, "Event Name:") %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<legend>Search</legend>
+<div class="tabbable well span6">  
+  <ul class="nav nav-tabs">  
+    <li class="active"><a href="#1" data-toggle="tab">Player</a></li>  
+    <li><a href="#2" data-toggle="tab">Position</a></li>  
+    <li><a href="#3" data-toggle="tab">Event</a></li>  
+    <li><a href="#4" data-toggle="tab">Game</a></li>
+  </ul>  
+  <div class="tab-content">  
+    <div class="tab-pane active" id="1">  
+      <%= form_tag "players", method: "get", :class => 'form-horizontal' do %>
+        <%= text_field_tag(:q, nil, :placeholder => 'Name') %>
+        <%= submit_tag("Search") %>
+      <% end %>  
+    </div>  
+    <div class="tab-pane" id="2">  
+      <%= form_tag("positions", method: "get", :class => 'form-horizontal') do %>
+        <%= text_field_tag(:q, nil, :placeholder => "Position in FEN", :class => 'span6') %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>  
+    <div class="tab-pane" id="3">  
+      <%= form_tag("events", method: "get", :class => 'form-horizontal') do %>
+        <%= text_field_tag(:q, nil, :placeholder => 'Name') %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>  
+    <div class="tab-pane" id="4">  
+      <%= form_tag("games", method: "get", :class => 'form-horizontal') do %>
+        <%= text_field_tag(:name, nil, :placeholder => 'Search by Name') %>
+        <%= submit_tag("Search") %>
+      <% end %>
+      <%= form_tag("games", method: "get", :class => 'form-horizontal') do %>
+        <%= text_field_tag(:gid, nil, :placeholder => 'Search by id') %>
+        <%= submit_tag("Search") %>
+      <% end %>
+    </div>  
+  </div>  
+</div>  
+ 

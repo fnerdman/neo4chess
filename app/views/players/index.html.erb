@@ -1,18 +1,24 @@
-<h1>Listing players</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @players.each do |player| %>
-  <tr>
-    <td><%= player.name %></td>
-    <td><%= link_to 'Show', player %></td>
-  </tr>
+<legend>Listing players</legend>
+<% if @players.empty? %>
+There were no players found.
+<% else %>
+  <div class="span5 offset1">
+    <table class="table table-hover well">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @players.each do |player| %>
+          <tr>
+            <td><%= player.name %></td>
+            <td><%= link_to 'Show', player, :class => "btn btn-mini"  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 <% end %>
-</table>
 

@@ -1,45 +1,53 @@
 <% individual = @position ? false : true %>
 
-<h1>Listing games</h1>
 
-<table class="table table-hover table-condensed">
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>White</th>
-      <th>Black</th>
-      <th>Event</th>
-      <th>Date</th>
-      <th>Site</th>
-      <th>Halfturns</th>
-      <th>Result</th>
-      <th>Mode</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @games.each do |game| %>
-    <% white = game.whitePlayer %>
-    <% black = game.blackPlayer %>
-    <% event = game.event %>
-    <tr>
-      <td><%= game.id %></td>
-      <td><%= link_to white.name, white %></td>
-      <td><%= link_to black.name, black %></td>
-      <td><%= link_to event.name, event %></td>
-      <td><%= game.date.strftime("%d.%m.%Y") %></td>
-      <td><%= game.site %></td>
-      <td><%= game.halfturns %></td>
-      <td><%= game.result %></td>
-      <td><%= game.mode %></td>
-      <td>
-        <% if individual %>
-          <% @position = game.outgoing(:startsAt) %>
-        <% end %>
-        <%= link_to 'Show', position_game_path(@position, game) %>
-      </td>
-    </tr>
+<div class="row-fluid">
+  <div class="span10 offset1">
+    <legend>Listing games</legend>
+    <% if @games.empty? %>
+    There were no games found.
+    <% else %>
+      <table class="table table-hover table-condensed well">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>White</th>
+            <th>Black</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Site</th>
+            <th>Halfturns</th>
+            <th>Result</th>
+            <th>Mode</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @games.each do |game| %>
+          <% white = game.whitePlayer %>
+          <% black = game.blackPlayer %>
+          <% event = game.event %>
+          <tr>
+            <td><%= game.id %></td>
+            <td><%= link_to white.name, white %></td>
+            <td><%= link_to black.name, black %></td>
+            <td><%= link_to event.name, event %></td>
+            <td><%= game.date.strftime("%d.%m.%Y") %></td>
+            <td><%= game.site %></td>
+            <td><%= game.halfturns %></td>
+            <td><%= game.result %></td>
+            <td><%= game.mode %></td>
+            <td>
+              <% if individual %>
+                <% @position = game.outgoing(:startsAt) %>
+              <% end %>
+              <%= link_to 'Show', position_game_path(@position, game), :class => "btn btn-mini" %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 

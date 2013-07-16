@@ -126,26 +126,15 @@
 <% end %>
 
 <% @evaluations = @position.evaluations %>
-<p>
-  <b>
-  There are <%= @evaluations.count %> Evaluations for this position. 
-  <%= link_to 'Show', root_path %>
-  <%= link_to 'Add', root_path %>
-  
-  </b>
-</p>
-
 <div class="row-fluid">
-	<div class="span4">
-		<%= render 'evaluations/list', :object => @evaluations %>
-		<% @evaluation = Evaluation.new %>
-		<%= render 'evaluations/form', :object => @evaluation %>
-	</div>
 	<div class="span6">
+		<legend>Comments</legend>
 		<% @comments = @position.comments %>
 		<%= render 'comments/list', :object => @comments %>
-		<% @comment = Comment.new %>
-		<%= render 'comments/form', :object => @comment %>
+	</div>
+	<div class="span5 offset1">
+		<legend>Evaluations</legend>
+		<%= render 'evaluations/list', :object => @evaluations %>
 	</div>
 </div>
 

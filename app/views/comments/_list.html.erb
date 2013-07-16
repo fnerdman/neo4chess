@@ -1,38 +1,42 @@
-<h1>Listing comments</h1>
-
-<ul class="unstyled">
+<% if @comments.empty? %>
+There were no comments found.
+<% else %>
+  <ul class="unstyled">
+    
+      <li>
+        <dl class="dl-horizontal">
+          <% @comments.each do |comment| %>
+          <dt><%= comment.title %></dt>
+          <dd><%= comment.body %></dd>
+          <dd><%= link_to 'Destroy', position_comment_path(@position, comment), method: :delete, data: { confirm: 'Are you sure?' } %></dd>
+          <% end %>
+        </dl>
+      </li>
+    
+  </ul>
+  <table class="table table-condensed">
   <% @comments.each do |comment| %>
-    <li>
-      <dl class="dl-horizontal">
-        <dt>Title</dt>
-        <dd><%= comment.title %></dd>
-        <dt>Comment</dt>
-        <dd><%= comment.body %></dd>
-        <dt></dt>
-        <dd><%= link_to 'Destroy', position_comment_path(@position, comment), method: :delete, data: { confirm: 'Are you sure?' } %></dd>
-      </dl>
-    </li>
+    <tr>
+      <th>
+        <table >
+          <tr>
+            <th>Title</th>
+            <td><%= comment.title %></td>
+          </tr>
+          <tr>
+            <th>Comment</th>
+            <td><%= comment.body %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= link_to 'Destroy', position_comment_path(@position, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        </table>
+      </th>
+    </tr>
   <% end %>
-</ul>
-<table class="table table-condensed">
-<% @comments.each do |comment| %>
-  <tr>
-    <th>
-      <table >
-        <tr>
-          <th>Title</th>
-          <td><%= comment.title %></td>
-        </tr>
-        <tr>
-          <th>Comment</th>
-          <td><%= comment.body %></td>
-        </tr>
-        <tr>
-          <td></td>
-          <td><%= link_to 'Destroy', position_comment_path(@position, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      </table>
-    </th>
-  </tr>
+  </table>
 <% end %>
-</table>
+
+<% @comment = Comment.new %>
+<%= render 'comments/form', :object => @comment %>

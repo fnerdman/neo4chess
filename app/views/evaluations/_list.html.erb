@@ -1,23 +1,31 @@
-<h1>Listing evaluations</h1>
-
-<table>
-  <tr>
-    <th>Engine</th>
-    <th>Centipawns</th>
-    <th>Ply</th>
-    <th>Nnodes</th>
-    <th>Bestpath</th>
-    <th></th>
-  </tr>
-
-<% @evaluations.each do |evaluation| %>
-  <tr>
-    <td><%= evaluation.engine %></td>
-    <td><%= evaluation.centipawns %></td>
-    <td><%= evaluation.ply %></td>
-    <td><%= evaluation.nNodes %></td>
-    <td><%= evaluation.bestPath %></td>
-    <td><%= link_to 'Destroy', position_evaluation_path(@position,evaluation) , method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<% if @evaluations.empty? %>
+There were no evaluations found.
+<% else %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Engine</th>
+        <th>Centipawns</th>
+        <th>Ply Count</th>
+        <th>Max Nodes</th>
+        <th>Bestpath</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @evaluations.each do |evaluation| %>
+        <tr>
+          <td><%= evaluation.engine %></td>
+          <td><%= evaluation.centipawns %></td>
+          <td><%= evaluation.ply %></td>
+          <td><%= evaluation.nNodes %></td>
+          <td><%= evaluation.bestPath %></td>
+          <td><%= link_to 'Destroy', position_evaluation_path(@position,evaluation) , method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
-</table>
+
+<% @evaluation = Evaluation.new %>
+<%= render 'evaluations/form', :object => @evaluation %>

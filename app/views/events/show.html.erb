@@ -1,19 +1,31 @@
-<p id="notice"><%= notice %></p>
+<% @games = @event.games %>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
-
-<p>
-  <b>Site:</b>
-  <%= @event.site %>
-</p>
-
-<p>
-  <b>Date:</b>
-  <%= @event.date %>
-</p>
-
-<% @games = @event.games%>
-<%= render 'games/list', :object => @games %>
+<div class="row">
+  <div class="span3">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>Event Info</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td><%= @event.name %></td>
+        </tr>
+        <tr>
+          <td>Site</td>
+          <td><%= @event.site %></td>
+        </tr>
+        <tr>
+          <td>Date</td>
+          <td><%= @event.date.strftime("%d.%m.%Y") %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span9">
+    <%= render 'games/list', :object => @games %>
+  </div>
+</div>
