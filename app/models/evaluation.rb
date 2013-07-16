@@ -5,5 +5,8 @@ class Evaluation < Neo4j::Rails::Model
   property :nNodes, :type => Fixnum
   property :bestPath, :type => String
 
+  validates :engine, presence: true
+  validates :centipawns, presence: true
+
   has_one :evaluates
 end
