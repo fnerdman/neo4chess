@@ -1,0 +1,2 @@
+$('#show_games').hide()
+$('<%= escape_javascript(render "games/list", object: @games) %>').appendTo("#games_list");
