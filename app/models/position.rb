@@ -3,6 +3,11 @@ class Position < Neo4j::Rails::Model
 
   has_n :moveTo
 
+  	def simple_fen
+  		match = fen.match(/(?<sfen>.*\/.*\/.*\/.*\/.*\/.*\/.*\/.*)(\sw|\sb)/)
+  		match[:sfen]
+  	end
+
   	def comments
 		self.incoming(:commentsOn).to_a
 	end

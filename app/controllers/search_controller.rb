@@ -19,6 +19,6 @@ class SearchController < ApplicationController
 	end
 	
 	def self.searchGameById id
-		Game.all(:id => id)
+		Game.find(:id => id)
 	end
 end

@@ -1,38 +1,27 @@
 <% if @comments.empty? %>
 There were no comments found.
+<br><br>
 <% else %>
-  <ul class="unstyled">
-    
-      <li>
-        <dl class="dl-horizontal">
-          <% @comments.each do |comment| %>
-          <dt><%= comment.title %></dt>
-          <dd><%= comment.body %></dd>
-          <dd><%= link_to 'Destroy', position_comment_path(@position, comment), method: :delete, data: { confirm: 'Are you sure?' } %></dd>
-          <% end %>
-        </dl>
-      </li>
-    
-  </ul>
   <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>
+          Title
+        </th>
+        <th>
+          Comment
+        </th>
+      </tr>
+    </thead>
   <% @comments.each do |comment| %>
-    <tr>
-      <th>
-        <table >
-          <tr>
-            <th>Title</th>
-            <td><%= comment.title %></td>
-          </tr>
-          <tr>
-            <th>Comment</th>
-            <td><%= comment.body %></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td><%= link_to 'Destroy', position_comment_path(@position, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        </table>
-      </th>
+    <tr>   
+      <th><%= comment.title %></th>
+      <td><%= comment.body %>
+        <br>
+        <div class="pull-right">
+          <%= link_to 'Destroy', position_comment_path(@position, comment), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-mini" %>
+        </div>
+      </td>
     </tr>
   <% end %>
   </table>

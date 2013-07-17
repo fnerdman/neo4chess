@@ -1,13 +1,4 @@
-<% @games = @position.games %>
-<p>
-  <b>
-  There are <%= @games.count %> games containing this position. <%= link_to 'Show', root_path %>
-  <% #render 'games/list', :object => @games %>
-  </b>
-</p>
-
 <div class="row-fluid">
-	
 	<div class="span3">
 		<% if @game %>
 			<ul class="nav nav-list">
@@ -66,64 +57,89 @@
 	</div>
 
 	<div class="span6">
-		<p>
-		  <b>Fen:</b>
-		  <%= @position.fen %>
-		</p>
+		<div align="center">
+			<% if @game %>
+				<% positionLinks = @game.positionLinks %>
+				<% nHalfturns = 0 %>
+				<% positionLinks.each do |link| %>
+			      <% if link.end_node.id == @position.id %>
+			        <% nHalfturns = link.nHalfturns %>
+			      <% end %>
+			    <% end %>
+				<div class="btn-group">
+				  <% if nHalfturns > 0 %>
+				    <%= link_to 'Start', position_game_path(positionLinks.first.end_node,@game), :class => "btn btn-small" %> 
+				    <%= link_to 'Backward', position_game_path(positionLinks[nHalfturns-1].end_node,@game), :class => "btn btn-small" %> 
+				  <% else %>
+				    <button class="btn btn-small disabled">Start</button>
+				    <button class="btn btn-small disabled">Backward</button>
+				  <% end %>
+				  <% if nHalfturns+1 < @game.halfturns %>
+				    <%= link_to 'Forward', position_game_path(positionLinks[nHalfturns+1].end_node,@game), :class => "btn btn-small" %>
+				    <%= link_to 'End', position_game_path(positionLinks.last.end_node,@game), :class => "btn btn-small" %>
+				  <% else %>
+				    <button class="btn btn-small disabled">Forward</button>
+				    <button class="btn btn-small disabled">End</button>
+				  <% end %>
+				</div>
+			<% end %>
+		</div>
+		<div align="center">
+			<canvas class="well" fen="<%= @position.simple_fen %>" id="mychessboard" width="400" height="400"></canvas>
+			<p>
+			  <b>Fen:</b>
+			  <%= @position.fen %>
+			</p>
+		</div>
 	</div>
 
 	<% if @game %>
-
 		<div class="span3">
-
-			<% positions = @game.positionLinks %>
-			<% nHalfturns = 0 %>
 			<ul class="nav nav-list">
 		 		<li class="nav-header">Game Moves</li>
 				  <% k=0 %>
-				  <% positions.each do |pos| %>
-				    <% if k%2 ==0 %>
-				     <%="#{1+(k/2)}."%>
-				      <% if pos.end_node.id == @position.id %>
-				        <% nHalfturns = pos.nHalfturns %>
-				        <b><%= link_to pos.move, position_game_path(pos.end_node,@game) %></b>
-				      <% else %>
-				        <%= link_to pos.move, position_game_path(pos.end_node,@game) %>
-				      <% end %>
-				    <% else %>
-				      <% if pos.end_node.id == @position.id %>
-				        <b><%= link_to pos.move, position_game_path(pos.end_node,@game) %></b>
-				        <% nHalfturns = pos.nHalfturns %>
-				      <% else %>
-				        <%= link_to pos.move, position_game_path(pos.end_node,@game) %>
-				      <% end %>
-				    <% end %>
-				    <% k+=1 %>
+				  <% lastMove = nil %>
+				  <% positionLinks.each do |link| %>
+				  	<% if lastMove %>
+					    <% if k%2 ==0 %>
+					     <%="#{1+(k/2)}."%>
+					      <% if link.end_node.id == @position.id %>
+					        <b><%= link_to lastMove, position_game_path(link.end_node,@game) %></b>
+					      <% else %>
+					        <%= link_to lastMove, position_game_path(link.end_node,@game) %>
+					      <% end %>
+					    <% else %>
+					      <% if link.end_node.id == @position.id %>
+					        <b><%= link_to lastMove, position_game_path(link.end_node,@game) %></b>
+					      <% else %>
+					        <%= link_to lastMove, position_game_path(link.end_node,@game) %>
+					      <% end %>
+					    <% end %>
+					    <% k+=1 %>
+					   <% end %>
+					   <% lastMove = link.move %>
 				  <% end %>
 			</ul>
 		</div>	
 	<% end %>
 </div>
-<% if @game %>
-	<div class="row-fluid">
-		<div class="span6 offset3">
-			<p class="text-center">
-			  <% if nHalfturns > 0 %>
-			    <%= link_to 'Start', position_game_path(positions.first.end_node,@game) %>, 
-			    <%= link_to 'Backward', position_game_path(positions[nHalfturns-1].end_node,@game) %>, 
-			  <% else %>
-			    Start, Backward, 
-			  <% end %>
-			  <% if nHalfturns+1 < @game.halfturns %>
-			    <%= link_to 'Forward', position_game_path(positions[nHalfturns+1].end_node,@game) %>, 
-			    <%= link_to 'End', position_game_path(positions.last.end_node,@game) %>
-			  <% else %>
-			    Forward, End
-			  <% end %>
-			</p>
-		</div>
+
+<% @games = @position.games %>
+
+<div id="show_games" class="alert alert-info">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	There are <%= @games.count %> games containing this position.
+	<div class="pull-right">
+	<%= form_tag(games_path, method: "get", remote: true) do %>
+		        <%= hidden_field_tag(:pid, @position.id) %>
+		        <%= submit_tag("Show") %>
+		      <% end %>
 	</div>
-<% end %>
+</div>
+
+<div id="games_list">
+</div>
+
 
 <% @evaluations = @position.evaluations %>
 <div class="row-fluid">

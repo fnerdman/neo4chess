@@ -1,5 +1,13 @@
+<legend>Upload</legend>
 <p id="notice"><%= notice %></p>
-<%= form_tag({action: :upload}, multipart: true) do %>
-  <%= file_field_tag 'pgn' %> </br>
-  <%= submit_tag("Upload") %>
-<% end %>
+<div class="row">
+	<div class="span4 well">
+		<%= form_tag({action: :upload}, multipart: true) do %>
+		  <%= file_field_tag 'pgn' %> </br>
+		  <%= submit_tag("Upload") %>
+		<% end %>
+	</div>
+	<div class="span4">
+		<p class="lead">You can upload your own pgn files here, which will be processed and added to the database.</p>
+	</div>
+</div>
