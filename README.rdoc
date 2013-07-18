@@ -17,8 +17,21 @@ and several other dependencies (see Gemfile)
 == Code
 
 Since Rails uses the Model View Controller pattern to accomplish things, it was emphazised as much as possiple to conform with this pattern. Model view and controller parts are all included in the app/ directory.
+
+=== Models
+
 The whole database interface can be found in the corresponding models. Interesting to look at is the Game model, which contains the code to create games with their positions, moves, comments, etc. and the Position model, which contains some interesting query logic.
+
+=== Controllers
+
 The Controller section is, also based on rails philisophy "Fat models, skinny controllers", rather small. Still theres a lot going on here. Search requests are answered, upload requests are directed to the game model and a lot of more stuff, see for yourself.
+
+=== Views
+
 The View section is rather big although there isn't realy much more happening than the building up of the site, with the ruby code inside having the main focus on linking. The positions/_show partial is the file to look at here, having most of the frontend core inside.
+
+=== Other
+
 To understand most of the routes in the view and controller sections one should have a look at config/routes, the first interesting part outside app/.
+
 To read input from pgn-Chess files the 'ictk' java library was integrated and a wrapper in ruby was written. This is the second interesting part outside off app/, which is located in lib/.
