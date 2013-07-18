@@ -10,6 +10,10 @@ class Game < Neo4j::Rails::Model
   has_one :startsAt
   has_n :positions
 
+
+  	# Queries section, see neo4j.rb documentation for
+  	# particular meaning of the methods
+
   	def whitePlayer
 		self.incoming(:playedWhite).first
 	end
@@ -35,10 +39,16 @@ class Game < Neo4j::Rails::Model
 		sequ
 	end
 
-  	def self.addGame gameWrapper
+	# create section
+	# rather bulky code which creates a game read from a pgn
+	# file, and at the same time checks for data integrity
+	# => no two players with the same name etc.
+	# and after that creates the game path through the positions
+
+  	def self.addGame ictkGame
 		Neo4j::Transaction.run do
 		
-			gameInfo = gameWrapper.gameInfo
+			gameInfo = ictkGame.gameInfo
 
 			gamename = "#{gameInfo.white} vs #{gameInfo.black} (#{gameInfo.result}), #{gameInfo.date.strftime("%d.%m.%Y")}"
 			gamename += ", #{gameInfo.event}" unless !gameInfo.event or !gameInfo.event.match(/[a-z0-9]/) 
@@ -61,11 +71,11 @@ class Game < Neo4j::Rails::Model
 				event.playedGames << game
 				
 				
-				x = game.halfturns = gameWrapper.moves.count
+				x = game.halfturns = ictkGame.moves.count
 				x-=1
 				lastPos = nil
 				pos = nil
-				gameWrapper.moves.reverse_each do |move|
+				ictkGame.moves.reverse_each do |move|
 					lastPos = pos
 					pos = Position.find_or_create_by(:fen => move[0])
 					

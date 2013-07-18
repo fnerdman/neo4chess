@@ -5,6 +5,7 @@ require 'ictk.jar'
 import 'ictk.boardgame.chess.io.PGNReader'
 import 'ictk.boardgame.chess.io.FEN'
 
+# holds the data which ictk's game info holds, see ictk docs
 class GameInfo
 	def initialize gameInfo
 		@gameInfo = gameInfo
@@ -54,6 +55,9 @@ class IctkGame
 		fen.split(/\s[0-9]+\s[0-9]+/).first
 	end
 
+	# saves necesary infos to create the game path in the
+	# @moves array. which is later used to greate the game in
+	# app/models/game
 	def initialize game
 		@game = game
 		@gameInfo = GameInfo.new game.getGameInfo
@@ -75,6 +79,10 @@ class IctkGame
 	attr_reader :positions, :moves, :gameInfo
 end
 
+# processes raw pgn string data into single pgn games
+# which are then passed to ictk's pgn reader
+# note the rescue, since the ictk library is having issues
+# with heavy annotated games and cant process all off them
 class IctkWrapper
 	def self.createGamesFromPgn pgn
 		game = String.new

@@ -1,4 +1,5 @@
 <div class="row-fluid">
+	<%# Left section with gameinfo and outoging and incomming moves %>
 	<div class="span3">
 		<% if @game %>
 			<ul class="nav nav-list">
@@ -56,6 +57,7 @@
 		<%= render 'positions/list', :object => @moves, :forward => false %>
 	</div>
 
+	<%# center section with forward, backward links and the chessboard, which is generate by some small coffescript in the assets/javascripts folder (note the id and fen attributes in the canvas element) %>
 	<div class="span6">
 		<div align="center">
 			<% if @game %>
@@ -93,6 +95,7 @@
 		</div>
 	</div>
 
+	<%# game navigation on the right side %>
 	<% if @game %>
 		<div class="span3">
 			<ul class="nav nav-list">
@@ -124,13 +127,16 @@
 	<% end %>
 </div>
 
+
+<%# show games notification, when the form (the show button) is pushed, an ajax request is sent to games_path which handles the respnse in a small js file (and hides the notification)%>
+
 <% @games = @position.games %>
 
 <div id="show_games" class="alert alert-info">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	There are <%= @games.count %> games containing this position.
 	<div class="pull-right">
-	<%= form_tag(games_path, method: "get", remote: true) do %>
+	<%= form_tag(games_path, method: "get", remote: true, id: "games_post") do %>
 		        <%= hidden_field_tag(:pid, @position.id) %>
 		        <%= submit_tag("Show") %>
 		      <% end %>
@@ -141,7 +147,7 @@
 </div>
 
 
-<% @evaluations = @position.evaluations %>
+
 <div class="row-fluid">
 	<div class="span6">
 		<legend>Comments</legend>
@@ -150,6 +156,7 @@
 	</div>
 	<div class="span5 offset1">
 		<legend>Evaluations</legend>
+		<% @evaluations = @position.evaluations %>
 		<%= render 'evaluations/list', :object => @evaluations %>
 	</div>
 </div>

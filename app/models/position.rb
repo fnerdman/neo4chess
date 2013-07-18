@@ -16,6 +16,8 @@ class Position < Neo4j::Rails::Model
 		self.incoming(:evaluates).to_a
 	end
 
+	# returns the games corecponding to
+	# the game models :position edge
   	def games
   		self.incoming(:positions)
 	end

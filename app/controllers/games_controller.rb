@@ -12,12 +12,17 @@ class GamesController < ApplicationController
     end
   end
 
+  # games_path is called with :pid, :name or :gid to invoke
+  # a search for corresponding games, if called with nothin,
+  # it returns nothing
   def index
     @games = []
     if params[:pid]
       @position = Position.find(params[:pid])
       @games = @position.games
 
+      #render partial: "games/list", object: @games
+      
       respond_to do |format|
         format.html {redirect_to @position}
         format.js {}

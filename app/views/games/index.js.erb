@@ -1,2 +1,3 @@
+<%# ajax code to answer the show games request from the form in positions/_show%>
 $('#show_games').hide()
 $('<%= escape_javascript(render "games/list", object: @games) %>').appendTo("#games_list");
