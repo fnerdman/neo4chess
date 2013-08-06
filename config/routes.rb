@@ -8,6 +8,8 @@ Neo4chess::Application.routes.draw do
   resources :home, :only => [:index] do
     collection do
       get "traverse"
+      get "benchmark"
+      post "benchmark"
     end
   end
 

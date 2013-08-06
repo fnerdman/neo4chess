@@ -1,0 +1,37 @@
+<legend>Benchmark</legend>
+<p id="notice"><%= notice %></p>
+<% if @benchmark %>
+
+	<table class="table table-hover table-condensed">
+        <tr>
+          <td>Total number of games</td>
+          <td><%=  @benchmark[:nGames] %></td>
+        </tr>
+        <tr>
+          <td>Total number of positions</td>
+          <td><%= @benchmark[:nPositions] %></td>
+        </tr>
+        <tr>
+          <td>Average load time of one game and its positions for 100 random games</td>
+          <td><%= @benchmark[:avgGetGamePos] %> s</td>
+        </tr>
+        <tr>
+          <td>Average traversal time from one position to another for 100 random traversals into the graph</td>
+          <td><%= @benchmark[:avgPositionTraversal] %> s</td>
+        </tr>
+    </table>
+
+<% else %>
+
+<div class="row">
+	<div class="span4">
+<%= form_tag do %>
+    <%= hidden_field_tag(:start, "true") %>
+    <%= submit_tag("Start Benchmark") %>
+  <% end %>
+  </div>
+	<div class="span4">
+		<p class="lead">Press start to start database benchmark.</p>
+	</div>
+</div>
+<% end %>

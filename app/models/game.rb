@@ -1,6 +1,6 @@
 class Game < Neo4j::Rails::Model
   property :id, :type => String, :index => :exact
-  property :name, :type => String, :index => :exact
+  property :name, :type => String , :index => :exact
   property :halfturns, :type => Fixnum
   property :result, :type => String
   property :date, :type => DateTime
@@ -34,7 +34,16 @@ class Game < Neo4j::Rails::Model
 		poss = self.rels(:outgoing,:positions)
 		sequ = Array.new(poss.count)
 		poss.each do |pos|
-			sequ[pos.nHalfturns] = pos
+			sequ[pos.getProperty('nHalfturns')] = pos
+		end
+		sequ
+	end
+
+	def positionsForBenchmark
+		poss = self.rels(:outgoing,:positions)
+		sequ = Array.new(poss.count)
+		poss.each do |pos|
+			sequ[pos.getProperty('nHalfturns')] = pos.end_node
 		end
 		sequ
 	end
@@ -54,6 +63,8 @@ class Game < Neo4j::Rails::Model
 			gamename += ", #{gameInfo.event}" unless !gameInfo.event or !gameInfo.event.match(/[a-z0-9]/) 
 			gamename += ", #{gameInfo.site}" unless !gameInfo.site or !gameInfo.site.match(/[a-z0-9]/)
 			gamename += ", #{gameInfo.round}" unless !gameInfo.round or !gameInfo.round.match(/[a-z0-9]/)
+			
+			check0 = Time.now
 			game = Game.find(:name => gamename)
 			if !game
 
@@ -63,15 +74,13 @@ class Game < Neo4j::Rails::Model
 				if !event
 					event = Event.create(:name => gameInfo.event, :date => gameInfo.date, :site => gameInfo.site)
 				end
+				x = ictkGame.moves.count
+				game = Game.create(:name => gamename, :result => gameInfo.result, :date => gameInfo.date, :site => gameInfo.site, :halfturns => x)
 
-				game = Game.create(:name => gamename, :result => gameInfo.result, :date => gameInfo.date, :site => gameInfo.site)
-
-				white.playedWhite << game
-				black.playedBlack << game
-				event.playedGames << game
+				Neo4j::Relationship.new(:playedWhite,white,game)
+				Neo4j::Relationship.new(:playedBlack,black,game)
+				Neo4j::Relationship.new(:playedGames,event,game)
 				
-				
-				x = game.halfturns = ictkGame.moves.count
 				x-=1
 				lastPos = nil
 				pos = nil
@@ -80,19 +89,19 @@ class Game < Neo4j::Rails::Model
 					pos = Position.find_or_create_by(:fen => move[0])
 					
 					if move[2] and move[2].match(/[a-z0-9]/) 
-						comment = Comment.new(:title => game.name, :body => move[2])
-						Neo4j::Rails::Relationship.create(:commentsOn, comment, pos)
+						comment = Comment.create(:title => game.name, :body => move[2])
+						Neo4j::Relationship.new(:commentsOn, comment, pos)
 					end
 
-					Neo4j::Rails::Relationship.create(:positions, game, pos, :nHalfturns => x, :move => move[1])
+					Neo4j::Relationship.new(:positions, game, pos, :nHalfturns => x, :move => move[1])
 					if lastPos
-						Move.create(:moveTo, pos, lastPos, :gameId => game.id, :move => move[1])
+						Neo4j::Relationship.new(:moveTo, pos, lastPos, :gameId => game.id, :move => move[1])
 					end
 
 					x-=1
 				end
-		
-				Move.create(:startsAt,game,pos, :gameId => game.id)
+
+				Neo4j::Relationship.new(:startsAt,game,pos, :gameId => game.id)
 			end
 		end
 	end

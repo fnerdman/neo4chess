@@ -4,6 +4,7 @@
 	<div class="span4 well">
 		<%= form_tag({action: :upload}, multipart: true) do %>
 		  <%= file_field_tag 'pgn' %> </br>
+		  <%= hidden_field_tag(:none, 0) %>
 		  <%= submit_tag("Upload") %>
 		<% end %>
 	</div>

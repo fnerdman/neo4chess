@@ -2,7 +2,7 @@
 	<ul class="nav nav-list">
 		 <li class="nav-header"><%= (forward ? 'Outgoing Moves' : 'Incoming Moves') %></li>
 		 <% @moves.each do |move| %>
-		  <li><%= link_to move.move, forward ? move.end_node : move.start_node %></li>
+		  <li><%= link_to move.getProperty('move'), forward ? move.end_node : move.start_node %></li>
 		<% end %>
 	</ul>
 <% end %>

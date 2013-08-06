@@ -84,13 +84,12 @@ end
 # note the rescue, since the ictk library is having issues
 # with heavy annotated games and cant process all off them
 class IctkWrapper
-	def self.createGamesFromPgn pgn
+	def self.createGamesFromPgn pgn, addNewLines
 		game = String.new
 		failed = 0
 		all = 0
 		moves = false
 		pgn.each do |line| 
-			
 			if line["["]
 				if moves
 					moves = false
@@ -100,7 +99,7 @@ class IctkWrapper
 					begin
 						yield IctkGame.new(PGNReader.new(br).readGame)
 					rescue => err
-						puts "failed:\n#{err}"
+						puts "failed:\n#{err.message}"
 						failed+=1
 					end
 					game = ""
@@ -108,7 +107,7 @@ class IctkWrapper
 			else
 				moves = true
 			end
-			game += line+"\n"
+			game += line+(addNewLines ? "\n" : "")
 		end
 		[all,all-failed,failed]
 	end

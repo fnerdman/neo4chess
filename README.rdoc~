@@ -1,0 +1,36 @@
+= neo4chess
+
+Neo4chess is a jruby on rails web-application designed to view and traverse Chessgames and their positions. To accomplish this goal a graph based approach viewing positions as nodes and the moves in between as edges was favoured over a standard rational model because of the overwhelming benefits in query performance. This application is first and foremost a prototype to show what the underlying databasesystem neo4j is capable off.
+
+== Used Libraries
+
+* {ictk}[http://ictk.sourceforge.net/], a java library which is capable of reading pgn-files 
+
+* {neo4j.rb gem}[https://github.com/andreasronge/neo4j], a ruby wrapper for the neo4j java API, written by Andreas Ront which includes the whole neo4j database application
+
+* {jschessboard}[https://code.google.com/p/jschessboard/], javascript code to view a chessboard in Forsyth Edwards Notation (FEN)
+
+* {twitter bootstrap}[http://twitter.github.io/bootstrap/], web-application frontend library
+
+and several other dependencies (see Gemfile)
+
+== Code
+
+Since Rails uses the Model View Controller pattern to accomplish things, it was emphazised as much as possiple to conform with this pattern. Model view and controller parts are all included in the app/ directory.
+
+=== Models
+
+The whole database interface can be found in the corresponding models. Interesting to look at is the Game model, which contains the code to create games with their positions, moves, comments, etc. and the Position model, which contains some interesting query logic.
+
+=== Controllers
+
+The Controller section is, also based on rails philisophy "Fat models, skinny controllers", rather small. Still theres a lot going on here. Search requests are answered, upload requests are directed to the game model and a lot of more stuff, see for yourself.
+
+=== Views
+
+The View section is rather big although there isn't realy much more happening than the building up of the site, with the ruby code inside having the main focus on linking. The positions/_show partial is the file to look at here, having most of the frontend core inside.
+
+=== Other
+
+To understand most of the routes in the view and controller sections one should have a look at config/routes, the first interesting part outside app/.
+To read input from pgn-Chess files the 'ictk' java library was integrated and a wrapper in ruby was written. This is the second interesting part outside off app/, which is located in lib/.

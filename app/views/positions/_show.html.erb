@@ -65,7 +65,7 @@
 				<% nHalfturns = 0 %>
 				<% positionLinks.each do |link| %>
 			      <% if link.end_node.id == @position.id %>
-			        <% nHalfturns = link.nHalfturns %>
+			        <% nHalfturns = link.getProperty('nHalfturns') %>
 			      <% end %>
 			    <% end %>
 				<div class="btn-group">
@@ -120,7 +120,7 @@
 					    <% end %>
 					    <% k+=1 %>
 					   <% end %>
-					   <% lastMove = link.move %>
+					   <% lastMove = link.getProperty('move') %>
 				  <% end %>
 			</ul>
 		</div>	
