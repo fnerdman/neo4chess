@@ -39,6 +39,9 @@ class HomeController < ApplicationController
   		check2 = Time.now
   		@benchmark[:avgGetGamePos] = (check1-check0)/100
   		@benchmark[:avgPositionTraversal] = (check2-check1)/x
+
+      puts "benchmark completed"
+      puts "nPositions: #{@benchmark[:nPositions]}, nGames #{@benchmark[:nGames]}, avgGetGamePos: #{@benchmark[:avgGetGamePos]}, avgPositionTraversal: #{@benchmark[:avgPositionTraversal]}"
   	end
   end
 end
