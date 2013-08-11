@@ -2,6 +2,7 @@ require 'lib/ictk_wrapper'
 
 class PgnController < ApplicationController
   def upload
+
   	if params[:none]
   		addNewLines = false
 	    if params[:pgn]
@@ -25,17 +26,18 @@ class PgnController < ApplicationController
 	        Game.addGame game
 	        avg2time += Time.now-innerCheck
 	        counter+=1
-
+	        puts "test1"
 	        if counter == 100
-	        	avgtime += avg2time
+	        	avgTime += avg2time
 	        	puts "100 games processed, avgtime per game: #{avg2time/100}"
 	        	avg2time=0
 	        	counter=0
 	        end
+	        puts "test2"
 	      end
 
 	    check1 = Time.now
-	    avgtime += avg2time
+	    avgTime += avg2time
 	    avgTime/=stats[1]
 
 	      flash[:notice] = "#{stats[0]} Games processed, #{stats[1]} successful, #{stats[2]} failed. Total time taken: #{check1-check0}s. Average per Game: #{avgTime}s"
