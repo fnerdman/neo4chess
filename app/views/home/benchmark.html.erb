@@ -16,8 +16,24 @@
           <td><%= @benchmark[:avgGetGamePos] %> s</td>
         </tr>
         <tr>
+          <td>Average load time of one game</td>
+          <td><%= @benchmark[:avgGetGame] %> s</td>
+        </tr>
+        <tr>
+          <td>Average load time of its Positions</td>
+          <td><%= @benchmark[:avgGetPos] %> s</td>
+        </tr>
+        <tr>
           <td>Average traversal time from one position to another for 100 random traversals into the graph</td>
           <td><%= @benchmark[:avgPositionTraversal] %> s</td>
+        </tr>
+        <tr>
+          <td>Min traversal time from one position to another</td>
+          <td><%= @benchmark[:avgPosMin] %> s</td>
+        </tr>
+        <tr>
+          <td>Max traversal time from one position to another</td>
+          <td><%= @benchmark[:avgPosMax] %> s</td>
         </tr>
     </table>
 

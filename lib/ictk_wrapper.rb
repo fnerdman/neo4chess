@@ -7,7 +7,8 @@ import 'ictk.boardgame.chess.io.FEN'
 
 # holds the data which ictk's game info holds, see ictk docs
 class GameInfo
-	def initialize gameInfo
+
+	def reset gameInfo
 		@gameInfo = gameInfo
 	end
 	
@@ -51,32 +52,35 @@ class IctkGame
 
 	@@fen = FEN.new
 
-	def removeNumbers fen
+	def self.removeNumbers fen
 		fen.split(/\s[0-9]+\s[0-9]+/).first
 	end
 
 	# saves necesary infos to create the game path in the
 	# @moves array. which is later used to greate the game in
 	# app/models/game
-	def initialize game
-		@game = game
-		@gameInfo = GameInfo.new game.getGameInfo
+	def initialize
+		@gameInfo = GameInfo.new 
+	end
+
+	def reset game
+		@gameInfo.reset game.getGameInfo
 		@moves = []
 		
-		h = @game.getHistory
+		h = game.getHistory
 
-		fen = removeNumbers(@@fen.boardToString(h.getNext.getBoard))
+		fen = IctkGame.removeNumbers(@@fen.boardToString(h.getNext.getBoard))
 		comment = (h.getNext.getAnnotation ? h.getNext.getAnnotation.getComment : "")
 		while h.hasNext
 			m = h.next
 			@moves << [fen, m.toString, comment]
-			fen = removeNumbers(@@fen.boardToString(m.getBoard))
+			fen = IctkGame.removeNumbers(@@fen.boardToString(m.getBoard))
 			comment = (m.getAnnotation ? m.getAnnotation.getComment : "")
 		end
 		@moves << [fen, @gameInfo.result.toString, comment]
 	end
 	
-	attr_reader :positions, :moves, :gameInfo
+	attr_reader :moves, :gameInfo
 end
 
 # processes raw pgn string data into single pgn games
@@ -84,7 +88,9 @@ end
 # note the rescue, since the ictk library is having issues
 # with heavy annotated games and cant process all off them
 class IctkWrapper
+
 	def self.createGamesFromPgn pgn, addNewLines
+		ictkGame = IctkGame.new
 		game = String.new
 		failed = 0
 		all = 0
@@ -93,15 +99,25 @@ class IctkWrapper
 			if line["["]
 				if moves
 					moves = false
-					is = java.io.ByteArrayInputStream.new game.to_java_bytes
-					br = java.io.BufferedReader.new java.io.InputStreamReader.new(is)	 
 					all+=1
 					begin
-						yield IctkGame.new(PGNReader.new(br).readGame)
+						is = java.io.ByteArrayInputStream.new game.to_java_bytes
+						ir = java.io.InputStreamReader.new(is)
+						br = java.io.BufferedReader.new ir
+						pr = PGNReader.new(br)
+						ictkGame.reset(pr.readGame) 
+
+						yield ictkGame
+
+						pr.close
+						br.close
+						ir.close
+						is.close
 					rescue => err
 						puts "failed:\n#{err.message}"
 						failed+=1
 					end
+					
 					game = ""
 				end
 			else

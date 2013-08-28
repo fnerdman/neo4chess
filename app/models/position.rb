@@ -23,18 +23,10 @@ class Position < Neo4j::Rails::Model
 	end
 
 	def outgoingMoves
-		positions = Hash.new
-		self.rels(:outgoing, :moveTo).each do |rel|
-			positions[rel.end_node.fen] = rel
-		end
-		positions.values
+		self.rels(:outgoing, :moveTo).to_a
 	end
 
 	def incomingMoves
-		positions = Hash.new
-		self.rels(:incoming, :moveTo).each do |rel|
-			positions[rel.start_node.fen] = rel
-		end
-		positions.values
+		self.rels(:incoming, :moveTo).to_a
 	end
 end

@@ -10,7 +10,6 @@ class Game < Neo4j::Rails::Model
   has_one :startsAt
   has_n :positions
 
-
   	# Queries section, see neo4j.rb documentation for
   	# particular meaning of the methods
 
@@ -56,7 +55,7 @@ class Game < Neo4j::Rails::Model
 
   	def self.addGame ictkGame
 		Neo4j::Transaction.run do
-		
+
 			gameInfo = ictkGame.gameInfo
 
 			gamename = "#{gameInfo.white} vs #{gameInfo.black} (#{gameInfo.result}), #{gameInfo.date.strftime("%d.%m.%Y")}"
@@ -64,9 +63,8 @@ class Game < Neo4j::Rails::Model
 			gamename += ", #{gameInfo.site}" unless !gameInfo.site or !gameInfo.site.match(/[a-z0-9]/)
 			gamename += ", #{gameInfo.round}" unless !gameInfo.round or !gameInfo.round.match(/[a-z0-9]/)
 			
-			check0 = Time.now
-			game = Game.find(:name => gamename)
-			if !game
+			if !Game.find(:name => gamename)
+
 
 				white = Player.find_or_create_by(:name => gameInfo.white)
 				black = Player.find_or_create_by(:name => gameInfo.black)
@@ -80,11 +78,12 @@ class Game < Neo4j::Rails::Model
 				Neo4j::Relationship.new(:playedWhite,white,game)
 				Neo4j::Relationship.new(:playedBlack,black,game)
 				Neo4j::Relationship.new(:playedGames,event,game)
-				
+
 				x-=1
 				lastPos = nil
 				pos = nil
 				ictkGame.moves.reverse_each do |move|
+					
 					lastPos = pos
 					pos = Position.find_or_create_by(:fen => move[0])
 					
@@ -95,14 +94,26 @@ class Game < Neo4j::Rails::Model
 
 					Neo4j::Relationship.new(:positions, game, pos, :nHalfturns => x, :move => move[1])
 					if lastPos
-						Neo4j::Relationship.new(:moveTo, pos, lastPos, :gameId => game.id, :move => move[1])
+						found = false
+						pos.rels(:outgoing, :moveTo).each do |rel|
+							if rel.getProperty('move') == move[1]
+								found = true
+								break
+							end
+						end
+						Neo4j::Relationship.new(:moveTo, pos, lastPos, :move => move[1]) unless found
 					end
-
 					x-=1
 				end
 
-				Neo4j::Relationship.new(:startsAt,game,pos, :gameId => game.id)
+				Neo4j::Relationship.new(:startsAt, game, pos, :gameId => game.id)
+
 			end
 		end
+
+		Player.close_lucene_connections
+		Event.close_lucene_connections
+		Game.close_lucene_connections
+		Position.close_lucene_connections
 	end
 end
